@@ -10,6 +10,7 @@ public class AtmMachine {
         // Pin validation
         int correctPin = 123494;
         int userInputPin;
+        boolean isPinCorrent = false;;
         // Maximum Attempts
         int attempts = 0;
 
@@ -19,11 +20,16 @@ public class AtmMachine {
             System.out.print("Enter your Pin: ");
             userInputPin = in.nextInt();
             attempts++;
+            
+            if (correctPin == userInputPin) {
+                isPinCorrent = true;
+                break;
+            }
             if (attempts == 3) {
                 System.out.println("You Have Reached Your 3 Maximum Attempts!");
                 return;
             }
-        } while (correctPin != userInputPin);
+        } while (!isPinCorrent);
         System.out.println("Access Granted");
 
         while (isRunning) {
@@ -42,14 +48,16 @@ public class AtmMachine {
                         break;
                     case 2:
                         System.out.print("\nEnter amount to deposit: ");
-                        double depositAmount = in.nextDouble();in.nextLine();
+                        double depositAmount = in.nextDouble();
+                        in.nextLine(); // buffering
 
                         balance = deposit(balance, depositAmount);
                         isRunning = wantToContinue();
                         break;
                     case 3:
                         System.out.print("\nEnter amount to withdraw: ");
-                        double withdrawAmount = in.nextDouble();in.nextLine();
+                        double withdrawAmount = in.nextDouble();
+                        in.nextLine(); // buffering
 
                         balance = withdraw(balance, withdrawAmount);
                         isRunning = wantToContinue();
@@ -102,7 +110,7 @@ public class AtmMachine {
         if (continueTransaction.equalsIgnoreCase("yes")) {
             return true;
         } else if (continueTransaction.equalsIgnoreCase("no")) {
-            System.out.println("Thank you for going to our BANK!");
+            System.out.println("Thank you for going to our Bank!");
             return false   ;
         } else {
             System.out.println("That's Invalid input! Please Try Again");
