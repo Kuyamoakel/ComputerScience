@@ -4,7 +4,7 @@ REFACTORING PA AND UPDATE AND DELETE SA PROGRAM.
 
 project 60-70% naito
 
-WHAT SHOULD NEXT CODING.
+WHAT SHOULD DO NEXT CODING.
 1. make a constant variable para doon sa 4 in limitation sa array.
     gawing final int col = 4;
 2. paulit ulit yung 1,2,3,4 kapag access yung id,name,age,grade.
