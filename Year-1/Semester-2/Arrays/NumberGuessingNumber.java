@@ -26,14 +26,18 @@ public class NumberGuessingNumber {
         System.out.print("Enter 1 Up to number to guess: ");
         int upToNumber = in.nextInt();
         
-        final int secretNumber = (int) (Math.random() * upToNumber + 1);
+        final int secretNumber = (int) (Math.random() * upToNumber + 1); // i don't want Zero hahaha
         
         while (!isSecretFound) {
             int lowerIndex = (int)(Math.random() * lowerMessage.length);
             int higherIndex = (int)(Math.random() * higherMessage.length);
+
             System.out.print("\nEnter Guess: ");
             int userGuess = in.nextInt();
-            
+
+            if (userGuess > upToNumber) {
+                System.out.println("Akala koba hanggang " + upToNumber + " Kalang? batnaman diyan ka.");
+            }
             if (userGuess > secretNumber) {
                 System.out.println(lowerMessage[lowerIndex]);
             }
@@ -42,11 +46,11 @@ public class NumberGuessingNumber {
             }
             if (userGuess == secretNumber) {
                 System.out.println("\nWoW You've Made it!");
-                break;
+                isSecretFound = true;
             }
         }
         
-        System.out.println("\nThe Secret Number is " + secretNumber);
+        System.out.println("The Secret Number is " + secretNumber);
 
     }
 }
