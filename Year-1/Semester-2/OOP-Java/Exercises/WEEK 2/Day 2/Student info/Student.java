@@ -33,7 +33,7 @@ public class Student {
     }
 
     //setters
-    public void setName(String name) {
+    public  x setName(String name) {
         this.name = name;
     }
 
