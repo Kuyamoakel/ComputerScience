@@ -9,7 +9,7 @@ public class DefaultConstructor {
     public static void main(String[] args) {
         DefaultConstructor obj1 = new DefaultConstructor();
 
-        // Prints the returned string
+        // if the program does not have constructor the compilier will provide a default constructor.
         System.out.println(obj1.display());
     }
 }
