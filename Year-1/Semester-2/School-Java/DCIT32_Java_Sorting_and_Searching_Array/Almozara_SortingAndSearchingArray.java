@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Almozara_SortingAndSearchingArray {
     public static void main(String[] args) {
@@ -16,8 +17,7 @@ public class Almozara_SortingAndSearchingArray {
         int studentCount = 0;
 
         while (true) {
-            System.out.print(
-                    "\n[1]Add new Student\n[2]Search student by Name\n[3]Display All Student\n[4]Update Student grade\nChoices: ");
+            System.out.print("\n[1] Add new Student\n[2] Search student by Name\n[3] Display All Student\n[4] Update Student grade\n[5] Display Grades (Highest to Lowest)\nChoices: ");
             int menu = in.nextInt();
             in.nextLine();
 
@@ -45,8 +45,8 @@ public class Almozara_SortingAndSearchingArray {
 
                     studentCount = addNewStudent(newStudent, newGrade, names, grades, studentCount);
                     break;
-                case 2:
-                    System.out.print("Enter Name of Student: ");
+                    case 2:
+                        System.out.print("Enter Name of Student: ");
                     String studentName = in.nextLine();
 
                     searchStudent(names, grades, studentName);
@@ -54,6 +54,8 @@ public class Almozara_SortingAndSearchingArray {
                     break;
                 case 3:
                     displayStudent(names, grades);
+                    highestStudent(names, grades);
+                    lowestStudent(names, grades);
                     break;
                 case 4:
                     System.out.print("Enter Name of Student: ");
@@ -61,6 +63,9 @@ public class Almozara_SortingAndSearchingArray {
 
                     updatingStudent(names, studentName1, grades, in);
 
+                    break;
+                case 5:
+                    sortingToHighest(names, grades);
                     break;
                 default:
                     System.out.println("Invalid Input");
@@ -85,6 +90,39 @@ public class Almozara_SortingAndSearchingArray {
             System.out.println(studentCount);
             return studentCount;
         }
+    }
+    public static void highestStudent(String[] names, int[] grades) {
+        int max = grades[0];
+        int i = 0;
+        int index = 0;
+        for (i = 0; i < names.length - 1; i ++) {
+            if (grades[i] == 0) {continue;}
+
+            if (grades[i] > max) {
+                max = grades[i];
+                index = i;
+            }
+        }
+        System.out.println("\n=== HIGHEST STUDENT ===\n" + names[index] + " | " + "Grade: " + grades[index]);
+    }
+
+    public static void lowestStudent(String[] names, int[] grades) {
+        int min = grades[0];
+        int i = 0;
+        int index = 0;
+        for (i = 0; i < names.length - 1; i ++) {
+            if (grades[i] == 0) {continue;}
+
+            if (grades[i] < min) {
+                min = grades[i];
+                index = i;
+            }
+        }
+        System.out.println("\n=== LOWEST STUDENT ===\n" + names[index] + " | " + "Grade: " + grades[index]);
+    }
+
+    public static void sortingToHighest(String[] names, int[] grades) {
+        // to be continue
     }
 
     public static void searchStudent(String[] names, int[] grades, String studentName) {
@@ -128,6 +166,7 @@ public class Almozara_SortingAndSearchingArray {
     }
 
     public static void displayStudent(String[] names, int[] grades) {
+        System.out.println("=== STUDENT LIST ===");
         for (int i = 0; i < names.length; i++) {
             if (names[i] != null && grades[i] != 0) {
                 System.out.println((1 + i) + ". " + names[i] + " | Grade: " + grades[i]);
