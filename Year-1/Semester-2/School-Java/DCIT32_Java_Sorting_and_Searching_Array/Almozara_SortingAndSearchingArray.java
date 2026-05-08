@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Almozara_SortingAndSearchingArray {
     public static void main(String[] args) {
@@ -14,12 +13,15 @@ public class Almozara_SortingAndSearchingArray {
         names[5] = "Maria";
         grades[5] = 80;
 
-        int studentCount = 0;
+        int studentCount = 2;
 
         while (true) {
-            System.out.print("\n[1] Add new Student\n[2] Search student by Name\n[3] Display All Student\n[4] Update Student grade\n[5] Display Grades (Highest to Lowest)\nChoices: ");
+            System.out.println("\n===== CAVITE UNIVERSITY =====");
+            System.out.print("[1] Add new Student\n[2] Search student by Name\n[3] Display All Student" +
+            "\n[4] Update Student grade\n[5] Display Grades (Highest to Lowest)" +
+            "\n[6] Display Grades (Lowest to Highest)\n[7] Exit\nChoices: ");
             int menu = in.nextInt();
-            in.nextLine();
+            in.nextLine(); 
 
             switch (menu) {
                 case 1:
@@ -45,12 +47,10 @@ public class Almozara_SortingAndSearchingArray {
 
                     studentCount = addNewStudent(newStudent, newGrade, names, grades, studentCount);
                     break;
-                    case 2:
-                        System.out.print("Enter Name of Student: ");
+                case 2:
+                    System.out.print("Enter Name of Student: ");
                     String studentName = in.nextLine();
-
                     searchStudent(names, grades, studentName);
-
                     break;
                 case 3:
                     displayStudent(names, grades);
@@ -60,69 +60,146 @@ public class Almozara_SortingAndSearchingArray {
                 case 4:
                     System.out.print("Enter Name of Student: ");
                     String studentName1 = in.nextLine();
-
                     updatingStudent(names, studentName1, grades, in);
-
                     break;
                 case 5:
                     sortingToHighest(names, grades);
                     break;
+                case 6:
+                    sortingToLowest(names, grades);
+                    break;
+                case 7:
+                    System.out.println("Thank you so much po!");
+                    System.exit(1);
+                    break;
                 default:
                     System.out.println("Invalid Input");
                     break;
+
             }
         }
     }
 
     public static int addNewStudent(String newStudent, int newGrade, String[] names, int[] grades, int studentCount) {
 
-        if (studentCount == 5 || studentCount == 0) {
-            System.out.println("Succesfully Added");
-            names[studentCount + 1] = newStudent;
-            grades[studentCount + 1] = newGrade;
-            studentCount++;
-            return studentCount;
-        } else {
-            System.out.println("Succesfully Added");
-            names[studentCount] = newStudent;
-            grades[studentCount] = newGrade;
-            studentCount++;
-            System.out.println(studentCount);
+        if (studentCount >= grades.length) {
+            System.out.println("Student list is full");
             return studentCount;
         }
+
+        // finding the empty slots
+        int slot = -1;
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] != null) {continue;}
+            slot = i;
+            break;
+        } 
+
+        if (slot == -1) {
+            System.out.println("No Available Slot!");
+            return studentCount;
+        }
+
+        names[slot] = newStudent;
+        grades[slot] = newGrade;
+        studentCount++;
+        System.out.println("~~ Succesfully Added ~~");
+        return studentCount;
     }
     public static void highestStudent(String[] names, int[] grades) {
-        int max = grades[0];
-        int i = 0;
-        int index = 0;
-        for (i = 0; i < names.length - 1; i ++) {
-            if (grades[i] == 0) {continue;}
+        int max = -1; // just making sure because after sorting the index zero might be zero, soooo just making sure. NOT FOUND YET
+        int index = -1;
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] == null || grades[i] == 0) {continue;}
 
             if (grades[i] > max) {
                 max = grades[i];
                 index = i;
             }
         }
-        System.out.println("\n=== HIGHEST STUDENT ===\n" + names[index] + " | " + "Grade: " + grades[index]);
+
+        if (index != -1) {
+            System.out.println("\n=== HIGHEST STUDENT ===\n" + names[index] + " | Grade: " + grades[index]);
+        }
     }
 
     public static void lowestStudent(String[] names, int[] grades) {
-        int min = grades[0];
-        int i = 0;
-        int index = 0;
-        for (i = 0; i < names.length - 1; i ++) {
-            if (grades[i] == 0) {continue;}
+        int min = Integer.MAX_VALUE; // why ?? we are getting the highest value possible, so in the first iteration the min variable will have value.
+        int index = -1;
+
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] == null || grades[i] == 0) {continue;}
 
             if (grades[i] < min) {
                 min = grades[i];
                 index = i;
             }
         }
-        System.out.println("\n=== LOWEST STUDENT ===\n" + names[index] + " | " + "Grade: " + grades[index]);
+        if (index != -1) {
+            System.out.println("\n=== LOWEST STUDENT ===\n" + names[index] + " | Grade: " + grades[index]);
+        }
     }
 
     public static void sortingToHighest(String[] names, int[] grades) {
-        // to be continue
+        //continue
+        
+        for (int i = 0; i < names.length - 1; i++) {
+            for (int k = 0; k < names.length - 1 - i; k++) {
+
+                if (names[k] == null || names[k + 1] == null) {continue;}
+
+                if (grades[k] < grades[k + 1]) {
+
+                    int tempGrade = grades[k];
+                    grades[k] = grades[k + 1]; // index placement, index of grade[k + 1]
+                    grades[k + 1] = tempGrade; // value placement
+
+                    String tempName = names[k];
+                    names[k] = names[k + 1]; // index placement, index of name[k + 1]
+                    names[k + 1] = tempName; // value placement
+                }
+            }
+        }
+
+        System.out.println("=== GRADES (Highest to Lowest) ===");
+        int count = 1;
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] != null && grades[i] != 0) {
+                System.out.println(count + ". " + names[i] + " | Grade: " + grades[i]);
+                count++;
+            }
+        }
+    }
+
+    public static void sortingToLowest(String[] names, int[] grades) {
+        //continue
+        
+        for (int i = 0; i < names.length - 1; i++) {
+            for (int k = 0; k < names.length - 1 - i; k++) {
+
+                if (names[k] == null || names[k + 1] == null) {continue;}
+
+                if (grades[k] > grades[k + 1]) {
+
+                    int tempGrade = grades[k];
+                    grades[k] = grades[k + 1]; // index placement, index of grade[k + 1]
+                    grades[k + 1] = tempGrade; // value placement
+
+                    String tempName = names[k];
+                    names[k] = names[k + 1]; // index placement, index of name[k + 1]
+                    names[k + 1] = tempName; // value placement
+                }
+            }
+        }
+
+        System.out.println("=== GRADES (Lowest to Highest) ===");
+        int count = 1;
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] != null && grades[i] != 0) {
+                System.out.println(count + ". " + names[i] + " | Grade: " + grades[i]);
+                count++;
+            }
+        }
     }
 
     public static void searchStudent(String[] names, int[] grades, String studentName) {
@@ -167,9 +244,11 @@ public class Almozara_SortingAndSearchingArray {
 
     public static void displayStudent(String[] names, int[] grades) {
         System.out.println("=== STUDENT LIST ===");
+        int count = 1;
         for (int i = 0; i < names.length; i++) {
             if (names[i] != null && grades[i] != 0) {
-                System.out.println((1 + i) + ". " + names[i] + " | Grade: " + grades[i]);
+                System.out.println(count + ". " + names[i] + " | Grade: " + grades[i]);
+                count++;
             }
         }
     }
