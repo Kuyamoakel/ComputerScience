@@ -17,11 +17,11 @@ public class Almozara_SortingAndSearchingArray {
 
         while (true) {
             System.out.println("\n===== CAVITE UNIVERSITY =====");
-            System.out.print("[1] Add new Student\n[2] Search student by Name\n[3] Display All Student" +
-            "\n[4] Update Student grade\n[5] Display Grades (Highest to Lowest)" +
-            "\n[6] Display Grades (Lowest to Highest)\n[7] Exit\nChoices: ");
+            System.out.print("[1] Add new Student\n[2] Search Student by Name\n[3] Display All Students" +
+                    "\n[4] Update Student grade\n[5] Display Grades (Highest to Lowest)" +
+                    "\n[6] Display Grades (Lowest to Highest)\n[7] Exit\nChoice: ");
             int menu = in.nextInt();
-            in.nextLine(); 
+            in.nextLine();
 
             switch (menu) {
                 case 1:
@@ -45,6 +45,10 @@ public class Almozara_SortingAndSearchingArray {
                         break;
                     }
 
+                    if (newGrade > 100 || newGrade < 0) {
+                        System.out.println("Grade must be between 0 and 100 only.");
+                        break;
+                    }
                     studentCount = addNewStudent(newStudent, newGrade, names, grades, studentCount);
                     break;
                 case 2:
@@ -70,7 +74,7 @@ public class Almozara_SortingAndSearchingArray {
                     break;
                 case 7:
                     System.out.println("Thank you so much po!");
-                    System.exit(1);
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid Input");
@@ -87,13 +91,20 @@ public class Almozara_SortingAndSearchingArray {
             return studentCount;
         }
 
+        if (newStudent.trim().isEmpty()) {
+            System.out.println("Student name cannot be empty.");
+            return studentCount;
+        }
+
         // finding the empty slots
         int slot = -1;
         for (int i = 0; i < names.length; i++) {
-            if (names[i] != null) {continue;}
+            if (names[i] != null) {
+                continue;
+            }
             slot = i;
             break;
-        } 
+        }
 
         if (slot == -1) {
             System.out.println("No Available Slot!");
@@ -103,14 +114,18 @@ public class Almozara_SortingAndSearchingArray {
         names[slot] = newStudent;
         grades[slot] = newGrade;
         studentCount++;
-        System.out.println("~~ Succesfully Added ~~");
+        System.out.println("~~ Successfully Added ~~");
         return studentCount;
     }
+
     public static void highestStudent(String[] names, int[] grades) {
-        int max = -1; // just making sure because after sorting the index zero might be zero, soooo just making sure. NOT FOUND YET
+        int max = -1; // just making sure because after sorting the index zero might be zero, soooo
+                      // just making sure. NOT FOUND YET
         int index = -1;
         for (int i = 0; i < names.length; i++) {
-            if (names[i] == null || grades[i] == 0) {continue;}
+            if (names[i] == null) {
+                continue;
+            }
 
             if (grades[i] > max) {
                 max = grades[i];
@@ -124,11 +139,14 @@ public class Almozara_SortingAndSearchingArray {
     }
 
     public static void lowestStudent(String[] names, int[] grades) {
-        int min = Integer.MAX_VALUE; // why ?? we are getting the highest value possible, so in the first iteration the min variable will have value.
+        int min = Integer.MAX_VALUE; // why ?? we are getting the highest value possible, so in the first iteration
+                                     // the min variable will have value.
         int index = -1;
 
         for (int i = 0; i < names.length; i++) {
-            if (names[i] == null || grades[i] == 0) {continue;}
+            if (names[i] == null) {
+                continue;
+            }
 
             if (grades[i] < min) {
                 min = grades[i];
@@ -141,30 +159,44 @@ public class Almozara_SortingAndSearchingArray {
     }
 
     public static void sortingToHighest(String[] names, int[] grades) {
-        //continue
-        
+
         for (int i = 0; i < names.length - 1; i++) {
-            for (int k = 0; k < names.length - 1 - i; k++) {
 
-                if (names[k] == null || names[k + 1] == null) {continue;}
+            for (int k = 0; k < names.length - 1; k++) {
 
-                if (grades[k] < grades[k + 1]) {
-
-                    int tempGrade = grades[k];
-                    grades[k] = grades[k + 1]; // index placement, index of grade[k + 1]
-                    grades[k + 1] = tempGrade; // value placement
+                // move non-null student forward if left side is null
+                if (names[k] == null && names[k + 1] != null) {
 
                     String tempName = names[k];
-                    names[k] = names[k + 1]; // index placement, index of name[k + 1]
-                    names[k + 1] = tempName; // value placement
+                    names[k] = names[k + 1];
+                    names[k + 1] = tempName;
+
+                    int tempGrade = grades[k];
+                    grades[k] = grades[k + 1];
+                    grades[k + 1] = tempGrade;
+                }
+
+                // normal descending sort
+                else if (names[k] != null && names[k + 1] != null &&
+                        grades[k] < grades[k + 1]) {
+
+                    int tempGrade = grades[k];
+                    grades[k] = grades[k + 1];
+                    grades[k + 1] = tempGrade;
+
+                    String tempName = names[k];
+                    names[k] = names[k + 1];
+                    names[k + 1] = tempName;
                 }
             }
         }
 
         System.out.println("=== GRADES (Highest to Lowest) ===");
+
         int count = 1;
+
         for (int i = 0; i < names.length; i++) {
-            if (names[i] != null && grades[i] != 0) {
+            if (names[i] != null) {
                 System.out.println(count + ". " + names[i] + " | Grade: " + grades[i]);
                 count++;
             }
@@ -172,30 +204,44 @@ public class Almozara_SortingAndSearchingArray {
     }
 
     public static void sortingToLowest(String[] names, int[] grades) {
-        //continue
-        
+
         for (int i = 0; i < names.length - 1; i++) {
-            for (int k = 0; k < names.length - 1 - i; k++) {
 
-                if (names[k] == null || names[k + 1] == null) {continue;}
+            for (int k = 0; k < names.length - 1; k++) {
 
-                if (grades[k] > grades[k + 1]) {
-
-                    int tempGrade = grades[k];
-                    grades[k] = grades[k + 1]; // index placement, index of grade[k + 1]
-                    grades[k + 1] = tempGrade; // value placement
+                // move non-null student forward if left side is null
+                if (names[k] == null && names[k + 1] != null) {
 
                     String tempName = names[k];
-                    names[k] = names[k + 1]; // index placement, index of name[k + 1]
-                    names[k + 1] = tempName; // value placement
+                    names[k] = names[k + 1];
+                    names[k + 1] = tempName;
+
+                    int tempGrade = grades[k];
+                    grades[k] = grades[k + 1];
+                    grades[k + 1] = tempGrade;
+                }
+
+                // normal ascending sort
+                else if (names[k] != null && names[k + 1] != null &&
+                        grades[k] > grades[k + 1]) {
+
+                    int tempGrade = grades[k];
+                    grades[k] = grades[k + 1];
+                    grades[k + 1] = tempGrade;
+
+                    String tempName = names[k];
+                    names[k] = names[k + 1];
+                    names[k + 1] = tempName;
                 }
             }
         }
 
         System.out.println("=== GRADES (Lowest to Highest) ===");
+
         int count = 1;
+
         for (int i = 0; i < names.length; i++) {
-            if (names[i] != null && grades[i] != 0) {
+            if (names[i] != null) {
                 System.out.println(count + ". " + names[i] + " | Grade: " + grades[i]);
                 count++;
             }
@@ -237,16 +283,23 @@ public class Almozara_SortingAndSearchingArray {
 
         System.out.print("Enter new Grade: ");
         int gradeNew = in.nextInt();
+
+        if (gradeNew > 100 || gradeNew < 0) {
+            System.out.println("Grade must be between 0 and 100 only.");
+            return;
+        }
+
         grades[i] = gradeNew;
-        System.out.println("Student Grade Succesfully Updated");
+        System.out.println("Student Grade Successfully Updated");
         return;
     }
 
     public static void displayStudent(String[] names, int[] grades) {
+
         System.out.println("=== STUDENT LIST ===");
         int count = 1;
         for (int i = 0; i < names.length; i++) {
-            if (names[i] != null && grades[i] != 0) {
+            if (names[i] != null) {
                 System.out.println(count + ". " + names[i] + " | Grade: " + grades[i]);
                 count++;
             }
