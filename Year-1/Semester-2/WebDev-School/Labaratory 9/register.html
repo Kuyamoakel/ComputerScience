@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <form action="#" class="form-container">
+            <h2 class="form-label">Hello, make your own account!</h2>
+            <div class="username">
+                <label for="uname">Username:</label>
+                <input type="text" name="uname" id="uname" class="uname">
+            </div>
+            <div class="password">
+                <label for="pword">Password: </label>
+                <input type="password" name="pword" id="pword" class="pword">
+            </div>
+            <div class="confirm-password">
+                <label for="c-pword">Confirm Password: </label>
+                <input type="password" name="c-pword" id="c-pword" class="c-pword">
+            </div>
+            <h3 class="form-label">Make your password Strong today!</h3>
+            <div class="button-container">
+                <div class="register">
+                    <button type="button" id="registerButton">Register</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById("registerButton").addEventListener("click", function(e) {
+            e.preventDefault();
+
+            const username = document.querySelector(".uname").value.trim()
+            const password = document.querySelector(".pword").value.trim()
+            const conPassword = document.querySelector(".c-pword").value.trim()
+            
+            if (username === "" || password === "" || conPassword === "") {
+                alert("Please input all fields!")
+            } else {
+                window.location.href = "index.html"
+            }
+        });
+    </script>
+</body>
+
+</html>

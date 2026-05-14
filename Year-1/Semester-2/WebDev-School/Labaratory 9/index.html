@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <form action="#" class="form-container">
+            <h2 class="form-label">Hello, Please login your account!</h2>
+            <div class="username">
+                <label for="uname">Username:</label>
+                <input type="text" name="uname" id="uname" class="uname">
+            </div>
+            <div class="password">
+                <label for="pword">Password: </label>
+                <input type="password" name="pword" id="pword" class="pword">
+            </div>
+            <h3 class="form-label">If you don't have an account you register.</h3>
+            <div class="button-container">
+                <div class="login">
+                    <button type="button" id="loginButton">Login</button>
+                </div>
+                <div class="register">
+                    <button type="button" id="registerButton">Register</button>
+                </div>
+            </div>
+        </form> 
+    </main>
+
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function(e) {
+            e.preventDefault();
+
+            const username = document.querySelector(".uname").value.trim()
+            const password = document.querySelector(".pword").value.trim()
+            
+            if (username === "" || password === "") {
+                alert("Please input both fields")
+            } else {
+                window.location.href = "grid.html";
+            }
+            
+        });
+
+        document.getElementById("registerButton").addEventListener("click", function(e) {
+            e.preventDefault();
+
+            window.location.href = "register.html";
+        });
+    </script>
+</body>
+
+</html>

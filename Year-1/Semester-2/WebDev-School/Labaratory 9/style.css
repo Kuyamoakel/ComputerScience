@@ -1,0 +1,162 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+}
+
+:root {
+    --black: #0e0e0e;
+    --white: #faf8f5;
+    --accent: #c9b99a;
+    --muted: #888;
+    --gold: rgb(231, 167, 46);
+    --border: rgba:(255, 255, 255, 0.1);
+}
+
+.form-container {
+    background-color: var(--black);
+    border-radius: 5px;
+    padding: 50px 80px;
+}
+
+.form-label {
+    color: var(--accent);
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-size: 15px;
+    padding: 15px 0;
+}
+
+.username {
+    display: grid;
+    flex-direction: row;
+    padding: 10px 0;
+}
+
+.username label {
+    font-family: 'Cormorant Garamond', 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: white;
+    letter-spacing: 1.5px;
+}
+
+.username input {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 0 10px;
+    height: 22px;
+    width: 250px;
+    outline: none;
+    border: 1px solid var(--accent);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.username input:focus {
+    background-color: var(--accent);
+    border-color: var(--muted);
+}
+
+.username {
+    display: grid;
+    flex-direction: row;
+}
+.password {
+    display: grid;
+    flex-direction: row;
+}
+
+.password label {
+    font-family: 'Cormorant Garamond', 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 1.5px;
+}
+
+.password input {
+    background: white;
+    border-radius: 10px;
+    padding: 0 10px;
+    height: 22px;
+    width: 250px;
+    outline: none;
+    border: 1px solid var(--accent);
+    transition: border-color 0.2s ease, background-color 0,2s ease;
+}
+
+.password input:focus {
+    background-color: var(--accent);
+    border-color: var(--muted);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.login button{
+    font-family: 'Cormorant Garamond', 'Courier New', Courier, monospace;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.login button:hover {
+    color: var(--white);
+    background-color: var(--gold);
+    transform: scale(1.1);
+}
+
+.register button {
+    font-family: 'Cormorant Garamond', 'Courier New', Courier, monospace;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.register button:hover {
+    color: var(--white);
+    background-color: var(--gold);
+    transform: scale(1.1);
+}
+
+.confirm-password {
+    display: grid;
+    padding: 10px 0;
+}
+
+.confirm-password label{
+    font-family: 'Cormorant Garamond', 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 1.5px;
+}
+
+.confirm-password input {
+    background: white;
+    border-radius: 10px;
+    padding: 0 10px;
+    height: 22px;
+    width: 250px;
+    outline: none;
+    border: 1px solid var(--accent);
+    transition: border-color 0.2s ease, background-color 0,2s ease;
+}
