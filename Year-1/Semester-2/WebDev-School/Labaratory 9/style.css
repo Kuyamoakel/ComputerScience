@@ -18,7 +18,7 @@ main {
     --accent: #c9b99a;
     --muted: #888;
     --gold: rgb(231, 167, 46);
-    --border: rgba:(255, 255, 255, 0.1);
+    --border: rgba(255, 255, 255, 0.1);
 }
 
 .form-container {
@@ -159,4 +159,9 @@ main {
     outline: none;
     border: 1px solid var(--accent);
     transition: border-color 0.2s ease, background-color 0,2s ease;
+}
+
+.confirm-password input:focus {
+    background-color: var(--accent);
+    border-color: var(--muted);
 }
