@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+
+    <input type="number" id="n1" placeholder="Enter First Number"><br>
+    <input type="number" id="n2" placeholder="Enter Second Number">
+
+    <br><br>
+
+    <button onclick="add()">Addition</button>
+    <button onclick="minus()">Subtraction</button>
+    <button onclick="multi()">Multiplication</button>
+    <button onclick="division()">Division</button>
+
+    <h3 id="result">Result: </h3>
+
+    <script>
+        function getValues() {
+            let a = Number(document.getElementById("n1").value);
+            let b = Number(document.getElementById("n2").value);
+            return [a, b];
+        }
+
+        function add() {
+            let [a, b] = getValues();
+
+            document.getElementById("result").innerText = "Result: " + (a + b);
+        }
+
+        
+        function minus() {
+            let [a, b] = getValues();
+
+            document.getElementById("result").innerText = "Result: " + (a - b);
+        }
+
+        
+        function multi() {
+            let [a, b] = getValues();
+
+            document.getElementById("result").innerText = "Result: " + (a * b);
+        }
+
+        
+        function division() {
+            let [a, b] = getValues();
+
+            if (b === 0) {
+                document.getElementById("result").innerText = "You cannot divide a number into zero"
+                return;
+            }
+            document.getElementById("result").innerText = "Result: " + (a / b);
+        }
+    </script>
+</body>
+</html>

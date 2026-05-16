@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Photo</title>
+</head>
+
+<body>
+    <h1>Upload a Photo</h1>
+
+    <input type="file" id="photoInput" accept="image/*" multiple>
+
+    <br><br>
+
+
+    <button id="previewButton">WANT TO SEE?</button>
+
+    <div id="gallery"></div>
+    <br><br>
+
+    <script>
+        const gallery = document.getElementById("gallery");
+        const photoInput = document.getElementById("photoInput"); // simple variable lang itong tatlo
+        const previewButton = document.getElementById("previewButton");
+
+        // eventlisterner ang job neto ay kapag na click yung button tsaka siya gagana yung "click"
+        // let's say na click yun file ay kukunin yung pictures sa input doon photoInput kaya files[0] kase nag ststart sa index of 0 yung mga photos
+        // dapat kukunin yung pictures doon sa input
+        previewButton.addEventListener("click", function () {
+            const files = photoInput.files; // this a list (array-like)
+
+            //condition naman ay kapag true yung file tsaka siya mag rurun
+            gallery.innerHTML = "";
+            for (const file of photoInput.files) {
+                //create the image
+                const img = document.createElement("img");
+                //set image source
+                img.src = URL.createObjectURL(file);
+                //size optional lang naman
+                img.width = 150;
+
+                //adding the image to page
+
+                gallery.appendChild(img);
+
+            }
+
+        });
+    </script>
+</body>
+
+</html>
