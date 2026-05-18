@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        img {
+            border-radius: 5px;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload your photos in here</h2>
+
+    <input type="file" id="photoInput" accept="image/*" multiple>
+
+    <br><br>
+    <button id="previewButton">WANT TO SEE?</button>
+
+
+    <div id="gallery"></div>
+
+    <script>
+        const photoInput = document.getElementById("photoInput");
+        const previewButton = document.getElementById("previewButton");
+        const gallery = document.getElementById("gallery");
+
+        previewButton.addEventListener("click", function () {
+            
+            const files = photoInput.files;
+            
+            gallery.innerHTML = "";
+            for (const file of files) {
+
+                const card = document.createElement("div");
+
+                const img = document.createElement("img");
+                img.src = URL.createObjectURL(file);
+                img.width = 150;
+
+                const btn = document.createElement("button");
+                btn.textContent = "X"
+
+                btn.addEventListener("click", function() {
+                    card.remove();
+                })
+
+                card.appendChild(img);
+                card.appendChild(btn);
+
+                gallery.appendChild(card);
+            }
+        })
+
+    </script>
+</body>
+</html>
