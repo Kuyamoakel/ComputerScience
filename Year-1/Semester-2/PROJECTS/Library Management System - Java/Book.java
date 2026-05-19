@@ -22,10 +22,23 @@ class Book {
         return quantity;
     }
 
+    // Setters
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Book name: " + bookName +
-                ", Author: " + author +
-                ", Quantity: " + quantity;
+                " | Author: " + author +
+                " | Quantity: " + quantity;
     }
 }

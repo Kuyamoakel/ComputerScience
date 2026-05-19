@@ -5,10 +5,13 @@
 
 # NEXT IMPROVEMENT
 
-1. Seperate the Logic into Library.java 
-2. Rename the variable names
-3. Add Delete Book
-4. Add setters (updating the quantity, authors, and bookname)
+1. Seperate the Logic into Library.java ✅
+2. Rename the variable names ✅
+3. Add Delete Book ✅
+4. Add setters (updating the quantity, authors, and bookname) ✅
 
 5. Validation Logic (Avoiding Duplicates)
 6. File Handling 
+
+7. Staff members
+8. Delete refactor (bug).

@@ -1,18 +1,18 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        ArrayList<Book> books = new ArrayList<>();
+        Library library = new Library();
 
         while (true) {
-            System.out.print("1. Add Book\n2. View Book\n3. Search Book\n4. Exit\nEnter Choice: ");
+            System.out.print("\n===== AKERU'S LIBRARY =====\n1. Add Book\n2. View Book\n3. Search Book\n4. Delete\n5. Restock Book\nEnter Choice: ");
             int menu = in.nextInt();
             in.nextLine();
 
             switch (menu) {
                 case 1:
+                    System.out.println("\n~~~ ADDING BOOKS ~~~");
                     System.out.print("Enter Book Name: ");
                     String bookN = in.nextLine();
                     
@@ -22,40 +22,32 @@ public class Main {
                     System.out.print("Enter Quantity: ");
                     int quantity = in.nextInt();
 
-                    Book book = new Book(bookN, author, quantity);
-                    books.add(book);
+                    library.addBook(bookN, author, quantity);
+
                     break;
                 case 2:
-                    System.out.println("================");
-
-                    for (Book BooK : books) {
-                        System.out.println(BooK);
-                    }
+                    System.out.println("\n===== LIST OF BOOKS =====");
+                    library.viewBooks();
                     break;
                 case 3:
-                    boolean isFound = false;
-                    int i = 0;
-                    Book currentBook = books.get(i);
+                    System.out.println("\n===== SEARCHING BOOK =====");
                     System.out.print("Enter Book Name: ");
-                    String searchBook = in.nextLine();
-
-                    for(Book booK : books) {
-                        if (booK.getBookName().equalsIgnoreCase(searchBook)) {
-                            isFound = true;
-                            break;
-                        }
-                    }
-
-                    if (isFound) {
-                        System.out.println("~~ Book Found ~~");
-                        System.out.println("Bookname: " + currentBook.getBookName() + "\nAuthor: " + currentBook.getAuthor() + "\nQuantity: " + currentBook.getQuantity());
-                    } else {
-                        System.out.println("Book not Found!");
-                    }
+                    String searchingBook = in.nextLine();
+                    
+                    library.searchBook(searchingBook);
                     break;
-                case 4:
-                    System.out.println("thank you");
-                    return;
+                case 4:  
+                    System.out.println("\n===== DELETING BOOK =====");
+                    System.out.print("Enter Book Name: ");
+                    String bookDelete = in.nextLine();
+
+                    library.deleteBook(bookDelete);
+                    break;
+                case 5:
+                    System.out.println("\n===== UPDATE BOOK =====");
+                    library.updateBook();
+
+                    break;
                 default:
                     System.out.println("INvalid input");
                 break;
