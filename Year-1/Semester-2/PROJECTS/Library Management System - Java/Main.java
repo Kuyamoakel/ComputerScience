@@ -33,21 +33,21 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("\n===== SEARCHING BOOK =====");
-                    System.out.print("Enter Book Name: ");
+                    System.out.print("Enter ID: ");
                     String searchingBook = in.nextLine();
 
                     library.searchBook(searchingBook);
                     break;
                 case 4:
                     System.out.println("\n===== DELETING BOOK =====");
-                    System.out.print("Enter Book Name: ");
+                    System.out.print("Enter ID: ");
                     String bookDelete = in.nextLine();
 
                     library.deleteBook(bookDelete);
                     break;
                 case 5:
                     System.out.println("\n===== UPDATE BOOK =====");
-                    System.out.print("Enter Book Name: ");
+                    System.out.print("Enter ID: ");
                     String bookUpdate = in.nextLine();
 
                     library.updateBook(bookUpdate);

@@ -1,15 +1,22 @@
 class Book {
+    private static int counter = 1000;
+    private String id;
     private String bookName;
     private String author;
     private int quantity;
 
     public Book (String bookName, String author, int quantity) {
+        this.id = "AK" + counter++; 
         this.bookName = bookName;
         this.author = author;
         this.quantity = quantity;
     }
-
+    
     // getters
+    public String getId() {
+        return id;
+    }
+
     public String getBookName() {
         return bookName;
     }
@@ -21,6 +28,7 @@ class Book {
     public int getQuantity() {
         return quantity;
     }
+
 
     // Setters
     public void setBookName(String bookName) {
@@ -37,7 +45,8 @@ class Book {
 
     @Override
     public String toString() {
-        return "Book name: " + bookName +
+        return  "ID: " + id +
+                " | Book name: " + bookName +
                 " | Author: " + author +
                 " | Quantity: " + quantity;
     }

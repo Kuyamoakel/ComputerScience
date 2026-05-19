@@ -38,7 +38,7 @@ public class Library {
         int i = 0;
 
         for (i = 0; i < books.size(); i++) {
-            if (books.get(i).getBookName().equalsIgnoreCase(bookname)) {
+            if (books.get(i).getId().equalsIgnoreCase(bookname)) {
                 isFound = true;
                 break;
             }
@@ -51,14 +51,14 @@ public class Library {
         }
     }
 
-    public void deleteBook(String bookname) {
+    public void deleteBook(String bookId) {
 
         if (books.size() == 0) {
             System.out.println("\n~~~ NO BOOKS AVAILABLE YET ~~~");
             return;
         }
 
-        int i = containsIndexBook(bookname);
+        int i = containsIndexBook(bookId);
         Book currentBook = books.get(i);
 
         if (i != -1) {
@@ -83,14 +83,14 @@ public class Library {
         }
     }
 
-    public void updateBook(String bookUpdate) {
+    public void updateBook(String bookID) {
 
         if (books.size() == 0) {
             System.out.println("\n~~~ NO BOOKS AVAILABLE YET ~~~");
             return;
         }
         
-        int i = containsIndexBook(bookUpdate);
+        int i = containsIndexBook(bookID);
 
         Book currentBook = books.get(i);
 
@@ -111,10 +111,10 @@ public class Library {
         }
     }
 
-    public int containsIndexBook(String bookname) {
+    public int containsIndexBook(String bookId) {
 
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getBookName().equalsIgnoreCase(bookname)) {
+            if (books.get(i).getId().equalsIgnoreCase(bookId)) {
                 return i;
             }
         }
