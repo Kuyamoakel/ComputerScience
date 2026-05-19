@@ -14,4 +14,8 @@
 6. File Handling 
 
 7. Staff members
-8. Delete refactor (bug).
+8. Delete refactor (bug). ✅
+9. Added new method for reusable code ✅
+10. Replace the iteration method in containtsIndexBook and containtsBook ✅
+
+![alt text](image.png)

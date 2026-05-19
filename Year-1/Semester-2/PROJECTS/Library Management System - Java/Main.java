@@ -6,7 +6,8 @@ public class Main {
         Library library = new Library();
 
         while (true) {
-            System.out.print("\n===== AKERU'S LIBRARY =====\n1. Add Book\n2. View Book\n3. Search Book\n4. Delete\n5. Restock Book\nEnter Choice: ");
+            System.out.print(
+                    "\n===== AKERU'S LIBRARY =====\n1. Add Book\n2. View Book\n3. Search Book\n4. Delete\n5. Restock Book\nEnter Choice: ");
             int menu = in.nextInt();
             in.nextLine();
 
@@ -15,12 +16,13 @@ public class Main {
                     System.out.println("\n~~~ ADDING BOOKS ~~~");
                     System.out.print("Enter Book Name: ");
                     String bookN = in.nextLine();
-                    
+
                     System.out.print("Enter Author Name: ");
                     String author = in.nextLine();
 
                     System.out.print("Enter Quantity: ");
                     int quantity = in.nextInt();
+                    in.nextLine();
 
                     library.addBook(bookN, author, quantity);
 
@@ -33,10 +35,10 @@ public class Main {
                     System.out.println("\n===== SEARCHING BOOK =====");
                     System.out.print("Enter Book Name: ");
                     String searchingBook = in.nextLine();
-                    
+
                     library.searchBook(searchingBook);
                     break;
-                case 4:  
+                case 4:
                     System.out.println("\n===== DELETING BOOK =====");
                     System.out.print("Enter Book Name: ");
                     String bookDelete = in.nextLine();
@@ -45,12 +47,15 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("\n===== UPDATE BOOK =====");
-                    library.updateBook();
+                    System.out.print("Enter Book Name: ");
+                    String bookUpdate = in.nextLine();
+
+                    library.updateBook(bookUpdate);
 
                     break;
                 default:
                     System.out.println("INvalid input");
-                break;
+                    break;
             }
         }
 

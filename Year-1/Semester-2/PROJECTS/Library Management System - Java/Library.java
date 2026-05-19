@@ -10,12 +10,11 @@ public class Library {
 
         for (Book book : books) {
             if (book.getBookName().equalsIgnoreCase(bookName)) {
-                System.out.println("~~~ Book Already Exist ~~~");
                 isExist = true;
             }
         }
         if (isExist) {
-            System.out.println("Book Already Exist!");
+            System.out.println("~~~ Book Already Exist ~~~");
             return;
         }
 
@@ -53,64 +52,54 @@ public class Library {
     }
 
     public void deleteBook(String bookname) {
-        boolean isFound = false;
-        int i = 0;
-
-        for (i = 0; i < books.size(); i++) {
-            if (books.get(i).getBookName().equalsIgnoreCase(bookname)) {
-                isFound = true;
-                break;
-            }
-        }
-
-        Book currentBook = books.get(i);
-
-        if (isFound) {
-            System.out.println("\n" + books.get(i));
-
-            System.out.print("\nAre you sure that you to delelete it ? (y/n): ");
-            String yesNo = in.nextLine();
-
-            if (yesNo.equalsIgnoreCase("y")) {
-                books.remove(i);
-                System.out.println("\n" + currentBook.getBookName() + " Is removed to library!");
-                return;
-            } else if (yesNo.equalsIgnoreCase("n")) {
-                System.out.println("~~~ Alright Thank you ~~~");
-                return;
-            } else {
-                System.out.println("Invalid Input");
-            }
-        }
-    }
-
-    public void updateBook() {
-        boolean isFound = false;
-        int i = 0;
 
         if (books.size() == 0) {
             System.out.println("\n~~~ NO BOOKS AVAILABLE YET ~~~");
             return;
         }
 
-        System.out.print("Enter Book Name: ");
-        String bookUpdate = in.nextLine();
+        int i = containsIndexBook(bookname);
+        Book currentBook = books.get(i);
 
-        for (i = 0; i < books.size(); i++) {
-            if (books.get(i).getBookName().equalsIgnoreCase(bookUpdate)) {
-                isFound = true;
-                break;
+        if (i != -1) {
+            System.out.println("\n" + books.get(i));
+            while (true) {
+                System.out.print("\nAre you sure you want to delete it ? (y/n): ");
+                String yesNo = in.nextLine();
+                if (yesNo.equalsIgnoreCase("y")) {
+                    books.remove(i);
+                    System.out.println("\n" + currentBook.getBookName() + " Has been removed from the library!");
+                    return;
+                } else if (yesNo.equalsIgnoreCase("n")) {
+                    System.out.println("~~~ Alright Thank you ~~~");
+                    return;
+                } else {
+                    System.out.println("\n~~~ Invalid Input ~~~");
+                    continue;
+                }
             }
+        } else {
+            System.out.println("~~~ NAME NOT FOUND ~~~");
         }
+    }
+
+    public void updateBook(String bookUpdate) {
+
+        if (books.size() == 0) {
+            System.out.println("\n~~~ NO BOOKS AVAILABLE YET ~~~");
+            return;
+        }
+        
+        int i = containsIndexBook(bookUpdate);
 
         Book currentBook = books.get(i);
 
-        if (isFound) {
+        if (i != -1) {
             System.out.print("Enter Quantity: ");
             int newQuantity = in.nextInt();
             in.nextLine();
 
-            if (newQuantity < currentBook.getQuantity()) {
+            if (newQuantity <= currentBook.getQuantity()) {
                 System.out.println("Bro? You are restocking, New quantity must be Higher!");
                 return;
             }
@@ -120,5 +109,15 @@ public class Library {
         } else {
             System.out.println("~~~ BOOK NOT FOUND ~~~");
         }
+    }
+
+    public int containsIndexBook(String bookname) {
+
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getBookName().equalsIgnoreCase(bookname)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
