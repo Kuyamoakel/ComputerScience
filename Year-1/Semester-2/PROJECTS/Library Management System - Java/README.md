@@ -10,7 +10,7 @@
 3. Add Delete Book ✅
 4. Add setters (updating the quantity, authors, and bookname) ✅
 
-5. Validation Logic (Avoiding Duplicates)
+5. Validation Logic (Avoiding Duplicates)✅
 6. File Handling 
 
 7. Staff members

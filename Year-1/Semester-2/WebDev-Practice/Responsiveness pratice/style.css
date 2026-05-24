@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 75%;
+}
+
+.nav-container {
+    background-color: rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+}
+
+.left-nav a {
+    text-decoration: none;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: wheat;
+    font-family: 'Cormorant', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.right-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+
+.buttons {
+    padding: 0.8vw 2.5vw;
+    width: 100%;
+    font-family: 'Cormorant', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: wheat;
+}
+
+@font-face {
+    font-family: "Cormorant";
+    src: url(assets/CormorantGaramond.ttf);
+}
