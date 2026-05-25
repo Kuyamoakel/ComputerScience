@@ -33,12 +33,12 @@ public class Library {
         }
     }
 
-    public void searchBook(String bookname) {
+    public void searchBook(String bookId) {
         boolean isFound = false;
         int i = 0;
 
         for (i = 0; i < books.size(); i++) {
-            if (books.get(i).getId().equalsIgnoreCase(bookname)) {
+            if (books.get(i).getId().equalsIgnoreCase(bookId)) {
                 isFound = true;
                 break;
             }

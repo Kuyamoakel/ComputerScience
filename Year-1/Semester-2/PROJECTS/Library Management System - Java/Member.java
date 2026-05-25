@@ -1,5 +1,5 @@
 class Member {
-    private int counter = 1000;
+    private static int counter = 1000;
     private String id;
     private String name;
     private String occupation;
