@@ -4,6 +4,7 @@ class Book {
     private String bookName;
     private String author;
     private int quantity;
+    private boolean borrow = false;
 
     public Book (String bookName, String author, int quantity) {
         this.id = "AK" + counter++; 
@@ -29,6 +30,10 @@ class Book {
         return quantity;
     }
 
+    public boolean getBorrow() {
+        return borrow;
+    }
+
 
     // Setters
     public void setBookName(String bookName) {
@@ -41,6 +46,10 @@ class Book {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setBorrow(boolean borrow) {
+        this.borrow = borrow;
     }
 
     @Override

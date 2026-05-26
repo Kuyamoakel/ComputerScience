@@ -8,7 +8,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         Library library = new Library();
         Records record = new Records();
-        BookBorrowing bookBorrowing = new BookBorrowing();
+        BookBorrowing bookBorrowing = new BookBorrowing(record, library);
 
         while (true) {
             System.out
@@ -88,9 +88,11 @@ public class Main {
                     System.out.print("Enter Your Member ID: ");
                     String memberId = in.nextLine();
 
+                    bookBorrowing.isMember(memberId);
+
                     System.out.print("Enter Book ID: ");
                     String bookId = in.nextLine();
-                    
+                        
                     System.out.print("Enter Quantity: ");
                     int bookQuantity = in.nextInt();
 
