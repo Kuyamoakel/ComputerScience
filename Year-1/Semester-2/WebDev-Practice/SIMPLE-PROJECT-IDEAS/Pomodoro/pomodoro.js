@@ -52,6 +52,7 @@ function pauseTimer() {
 function resetTimer() {
     clearInterval(interval);
     interval = null;
+    timeleft = 25 * 60;
 
     timer.textContent = "25:00";
 }
