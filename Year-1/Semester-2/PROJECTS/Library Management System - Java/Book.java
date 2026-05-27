@@ -4,6 +4,7 @@ class Book {
     private String bookName;
     private String author;
     private int quantity;
+    private int availableQuantity;
     private boolean borrow = false;
 
     public Book (String bookName, String author, int quantity) {
@@ -11,6 +12,7 @@ class Book {
         this.bookName = bookName;
         this.author = author;
         this.quantity = quantity;
+        this.availableQuantity = quantity;
     }
     
     // getters
@@ -31,9 +33,18 @@ class Book {
     }
 
     public boolean getBorrow() {
-        return borrow;
+        if (availableQuantity > 0) {
+            availableQuantity--;
+            return true;
+        }
+        return false;
     }
 
+    public void returnBook() {
+        if (availableQuantity < quantity) {
+            availableQuantity++;
+        }
+    }
 
     // Setters
     public void setBookName(String bookName) {
@@ -57,6 +68,6 @@ class Book {
         return  "ID: " + id +
                 " | Book name: " + bookName +
                 " | Author: " + author +
-                " | Quantity: " + quantity;
+                " | Available: " + availableQuantity + "/" + quantity;
     }
 }

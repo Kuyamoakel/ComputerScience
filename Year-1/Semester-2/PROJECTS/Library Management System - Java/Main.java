@@ -88,12 +88,19 @@ public class Main {
                     System.out.print("Enter Your Member ID: ");
                     String memberId = in.nextLine();
 
-                    bookBorrowing.isMember(memberId);
-
+                    if(!bookBorrowing.isMember(memberId)) {
+                        System.out.println("YOU ARE NOT A MEMBER!");
+                        break;
+                    }
                     System.out.print("Enter Book ID: ");
                     String bookId = in.nextLine();
-                        
-                    System.out.print("Enter Quantity: ");
+
+                    if(!bookBorrowing.bookFind(bookId)) {
+                        System.out.println("Book is not available");
+                        break;
+                    }
+
+                    System.out.print("\nEnter Quantity: ");
                     int bookQuantity = in.nextInt();
 
                     bookBorrowing.borrowBook(bookId, bookQuantity, memberId);

@@ -8,31 +8,39 @@ public class BookBorrowing {
     }
 
     public void borrowBook(String bookId, int quantity, String memberId) {
+        int i = 0;
+        Book currentBook = libray.books.get(i);
 
-        if (isMember(memberId)) {
-            int i = 0;
-            boolean isFound = false;
 
-            for (i = 0; i < libray.books.size(); i++) {
-                if (libray.books.get(i).getId().equalsIgnoreCase(bookId)) {
-                    isFound = true;
-                    break;
-                }
+        for (i = 0; i < libray.books.size(); i++) {
+            if (libray.books.get(i).getId().equalsIgnoreCase(memberId)) {
+                break;
             }
-
-            if (isFound) {
-                if (quantity > libray.books.get(i).getQuantity()) {
-                    System.out.println("That's over the stock of the library!");
-                    return;
-                } else {
-                    int newQuantity = libray.books.get(i).getQuantity() - quantity;
-
-                    libray.books.get(i).setQuantity(newQuantity);
-                }
-            }
-        } else {
-            System.out.println("You are not a Member!");
         }
+
+        if (quantity == 0) {
+            System.out.println("Please put proper value on it.");
+            return;
+        }
+
+        if (quantity > currentBook.getQuantity()) {
+            System.out.println("That is more than our Stock");
+            return;
+        }   
+    }
+
+    public boolean bookFind(String bookId) {
+        boolean isBookFound = false;
+
+        for (int i = 0; i < libray.books.size(); i++) {
+            if (libray.books.get(i).getId().equalsIgnoreCase(bookId)) {
+                System.out.println("-----------------------------------------------------------");
+                System.out.println(libray.books.get(i));
+                System.out.println("-----------------------------------------------------------");
+                return isBookFound = true;
+            }
+        }
+        return isBookFound;
 
     }
 
