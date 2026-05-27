@@ -18,6 +18,13 @@ main {
     font-size: 3rem;
 }
 
+.break {
+    font-family: 'Lilita One', sans-serif;
+    color: #F4F1E8;
+    letter-spacing: 2px;
+    font-size: 2rem;
+}
+
 .pomodoro-container {
     background-color: #3D5A3E;
     display: flex;
@@ -25,19 +32,9 @@ main {
     align-items: center;
     flex-direction: column;
     width: min(90%, 400px);
-    height: min(90%, 150px);
+    height: min(90%, 200px);
     gap: 2rem;
     border-radius: 5px;
-}
-
-#birdCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
 }
 
 .button-container {
@@ -62,6 +59,10 @@ main {
 
 .start-button:hover, .pause-button:hover, .restart-button:hover {
     transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
 }
 
 
