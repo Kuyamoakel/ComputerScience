@@ -7,7 +7,7 @@ const restartButton = document.getElementById("restart");
 
 // sounds
 const clickSound = new Audio("assets/audio/Click-Gun.mp3");
-const rainingSound = new Audio("assets/audio/RainingSound.mp3");
+const rainingSound = new Audio("assets/audio/NatureSound.mp3");
 
 
 let timeleft = 25 * 60;
