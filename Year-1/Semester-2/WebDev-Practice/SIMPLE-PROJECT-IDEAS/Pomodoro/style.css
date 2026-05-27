@@ -1,0 +1,47 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#timer {
+    font-family: 'Lilita One', sans-serif;
+    color: white;
+    letter-spacing: 1.5px;
+    font-size: 2rem;
+}
+
+.button-container {
+    background-color: rgb(38, 32, 32);
+    padding: 0.5rem;
+    border-radius: 5px;
+
+}
+
+.start-button, .pause-button, .restart-button {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    font-family: 'Lilita One', sans-serif;
+    color: orange;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    letter-spacing: 1.5px;
+}
+
+.pomodoro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.80);
+    padding: 1rem 6rem;
+    border-radius: 5px;
+}
+
+@font-face {
+    font-family: 'Lilita One';
+    src: url(assets/fonts/LilitaOne.woff2);
+}
