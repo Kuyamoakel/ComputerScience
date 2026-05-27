@@ -1,9 +1,13 @@
-const timer = document.getElementById("timer");
 
+// variables
+const timer = document.getElementById("timer");
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const restartButton = document.getElementById("restart");
+
+// sounds
 const clickSound = new Audio("assets/audio/Click-Gun.mp3");
+const rainingSound = new Audio("assets/audio/RainingSound.mp3");
 
 
 let timeleft = 25 * 60;
@@ -27,6 +31,9 @@ function startTimer() {
     if (interval !== null) {
         return;
     }
+    
+    rainingSound.loop = true;
+    rainingSound.play();
 
     interval = setInterval(() => {
 
@@ -45,11 +52,17 @@ function startTimer() {
 }
 
 function pauseTimer() {
+    rainingSound.pause();
+    rainingSound.currentTime = 0;
+
     clearInterval(interval);
     interval = null;
 }
 
 function resetTimer() {
+
+    rainingSound.pause();
+    rainingSound.currentTime = 0;
     clearInterval(interval);
     interval = null;
     timeleft = 25 * 60;
