@@ -73,6 +73,7 @@ function pauseTimer() {
 
 function resetTimer() {
     pauseTimer();
+    stopAllSounds();
     isBreak = false;
     timeleft = 25 * 60;
     breakDisplay.classList.add("hidden")
