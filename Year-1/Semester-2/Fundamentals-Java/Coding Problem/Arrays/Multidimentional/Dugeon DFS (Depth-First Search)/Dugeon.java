@@ -14,6 +14,7 @@ public class Dugeon {
         }
         dugeonPrint(dugeon);
     }
+
     public static void dugeonPrint(char[][] dugeon) {
         for (int row = 0; row < dugeon.length; row++) {
             for (int col = 0; col < dugeon[row].length; col++) {
@@ -23,6 +24,18 @@ public class Dugeon {
         }
     }
 
+    public static int findStart(char[][] dugeon) {
+        int startPosition = 0;
+        
+        for (int row = 0; row < dugeon.length; row++) {
+            for (int col = 0; col < dugeon[row].length; col++) {
+                if (dugeon[row][col] == 'S') {
+                    startPosition = dugeon[row][col];
+                }
+            }
+        }
+        return startPosition;
+    }
     public static void main(String[] args) {
 
         
@@ -36,5 +49,7 @@ public class Dugeon {
         char[][] dugeon = new char[rows][col];
 
         creatingDugeon(dugeon);
+        
+        System.out.println(findStart(dugeon));
     }
 }
