@@ -23,8 +23,12 @@ public class Main {
 
                     study.insertWork(subject, category, hours);
                 }    
-                case 2 -> {study.viewWork();}     
-                default -> {break;}
+                case 2 -> {study.viewWork();}   
+                case 3 -> {
+                    System.out.println("Thank you!");
+                    return;
+                }
+                default -> {System.out.println("Invalid Input");}
             }
         }
     }
