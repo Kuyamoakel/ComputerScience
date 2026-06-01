@@ -6,7 +6,7 @@ public class Main {
         Studyhour study = new Studyhour();
 
         while (true) {
-            System.out.print("[1] Insert Work\n[2] Statistic\nChoices: ");
+            System.out.print("[1] Insert Work\n[2] Statistic\n[3] Exit\nChoices: ");
             int menu = in.nextInt();
             in.nextLine();
 
