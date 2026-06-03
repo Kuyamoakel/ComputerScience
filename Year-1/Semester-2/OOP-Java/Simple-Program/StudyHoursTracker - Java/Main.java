@@ -25,7 +25,7 @@ public class Main {
                 }    
                 case 2 -> {study.viewWork();}   
                 case 3 -> {
-                    System.out.println("Thank you for using our tracker");
+                    System.out.println("Thank you for using our tracker!");
                     return;
                 }
                 default -> {System.out.println("Invalid Input");}
