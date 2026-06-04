@@ -1,5 +1,6 @@
 class Book {
     private static int counter = 1000;
+    private String borrowId;
     private String id;
     private String bookName;
     private String author;
@@ -7,12 +8,14 @@ class Book {
     private int availableQuantity;
     private boolean borrow = false;
 
-    public Book (String bookName, String author, int quantity) {
+    public Book (String bookName, String author, int quantity, boolean borrow) {
         this.id = "AK" + counter++; 
+        this.borrowId = "AK" + counter + 5;
         this.bookName = bookName;
         this.author = author;
         this.quantity = quantity;
         this.availableQuantity = quantity;
+        this.borrow = borrow;
     }
     
     // getters
@@ -68,6 +71,6 @@ class Book {
         return  "ID: " + id +
                 " | Book name: " + bookName +
                 " | Author: " + author +
-                " | Available: " + availableQuantity + "/" + quantity;
+                " | Available: " + quantity + "/" + availableQuantity;
     }
 }

@@ -18,6 +18,11 @@ public class BookBorrowing {
             }
         }
 
+        if (currentBook.getQuantity() == 0) {
+            System.out.println("No stock available!");
+            return;
+        }
+
         if (quantity == 0) {
             System.out.println("Please put proper value on it.");
             return;
@@ -26,7 +31,11 @@ public class BookBorrowing {
         if (quantity > currentBook.getQuantity()) {
             System.out.println("That is more than our Stock");
             return;
-        }   
+        }
+
+        int newValue = currentBook.getQuantity() - quantity;
+        currentBook.setQuantity(newValue);
+        System.out.println("~~~ Succesfully Borrow! ~~~");
     }
 
     public boolean bookFind(String bookId) {
