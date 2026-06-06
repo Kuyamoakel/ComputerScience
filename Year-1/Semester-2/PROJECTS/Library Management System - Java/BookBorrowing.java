@@ -35,6 +35,7 @@ public class BookBorrowing {
 
         int newValue = currentBook.getQuantity() - quantity;
         currentBook.setQuantity(newValue);
+        currentBook.setBorrowBol(true);
         System.out.println("~~~ Succesfully Borrow! ~~~");
     }
 

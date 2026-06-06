@@ -1,0 +1,1 @@
+# SUMMER AFTER YEAR 1 - June 6 - August 10 (2 months)

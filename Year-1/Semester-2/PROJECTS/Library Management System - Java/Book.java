@@ -8,14 +8,14 @@ class Book {
     private int availableQuantity;
     private boolean borrow = false;
 
-    public Book (String bookName, String author, int quantity, boolean borrow) {
+    public Book (String bookName, String author, int quantity) {
         this.id = "AK" + counter++; 
         this.borrowId = "AK" + counter + 5;
         this.bookName = bookName;
         this.author = author;
         this.quantity = quantity;
         this.availableQuantity = quantity;
-        this.borrow = borrow;
+        this.borrow = false;
     }
     
     // getters
@@ -43,6 +43,10 @@ class Book {
         return false;
     }
 
+    public boolean getBorrowBol() {
+        return borrow;
+    }
+
     public void returnBook() {
         if (availableQuantity < quantity) {
             availableQuantity++;
@@ -64,6 +68,10 @@ class Book {
 
     public void setBorrow(boolean borrow) {
         this.borrow = borrow;
+    }
+
+    public void setBorrowBol(boolean BorrowBol) {
+        this.borrow = BorrowBol;
     }
 
     @Override
