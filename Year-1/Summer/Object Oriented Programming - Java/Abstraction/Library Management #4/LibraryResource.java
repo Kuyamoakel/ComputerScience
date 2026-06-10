@@ -9,9 +9,16 @@ abstract class Library {
 
     abstract void borrowItem();
 
-    void borrowReceipt() {
-        System.out.println("Successfully Borrowed!");
+    void displayDetails() {
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author);
     }
+
+    void bookReceipt() {
+        System.out.println("Succesfully Borrow!");
+    }
+
+
 }
 
 class Book extends Library {
@@ -22,7 +29,7 @@ class Book extends Library {
 
     @Override
     public void borrowItem() {
-        System.out.println("Title: " + title + "\nAuthor: " + author);
+        System.out.println("Borrowing Book...");
     }
 }
 
@@ -34,7 +41,7 @@ class Magazine extends Library {
 
     @Override
     public void borrowItem() {
-        System.out.println("Title: " + title + "\nAuthor: " + author);
+        System.out.println("Borrowing Book...");
     }
 }
 
@@ -49,9 +56,10 @@ public class LibraryResource {
 
         };
 
-        for (Library libray : librarys) {
-            libray.borrowItem();
-            libray.borrowReceipt();
+        for (Library library : librarys) {
+            library.borrowItem();
+            library.displayDetails();
+            library.bookReceipt();
             System.out.println();
         }
 
