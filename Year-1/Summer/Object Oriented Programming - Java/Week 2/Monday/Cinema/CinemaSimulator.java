@@ -3,8 +3,26 @@ import java.util.Scanner;
 
 class Cinema {
     ArrayList<Movie> movies = new ArrayList<>();
-    ArrayList<Booking> bookings = new ArrayList<>();
     ArrayList<Customer> customers = new ArrayList<>();
+    ArrayList<Booking> bookings = new ArrayList<>();
+
+    void addMovie(Movie movie) {
+        movies.add(movie);
+    }
+
+    void addCostumer(Customer customer) {
+        customers.add(customer);
+    }
+
+    void addBooking(Booking booking) {
+        bookings.add(booking);
+    }
+
+    void viewAllMovies() {
+        for (int i = 0; i < movies.size(); i++) {
+            System.out.println(i + ". " + movies.get(i).name);
+        }
+    }
 }
 
 class Movie {
@@ -23,9 +41,9 @@ class Movie {
     @Override
     public String toString() {
         return "Movie Name: " + name +
-               "\nGenre: " + genre +
-               "\nTicket Price: " + ticketPrice +
-               "\nAvaiable Seats: " + availableSeats;
+                "\nGenre: " + genre +
+                "\nTicket Price: " + ticketPrice +
+                "\nAvaiable Seats: " + availableSeats;
     }
 }
 
@@ -40,8 +58,8 @@ class Customer {
 
     @Override
     public String toString() {
-        return "Movie Name: " + name +
-               "\nCustomerId: " + customerId;
+        return "Customer Name: " + name +
+                "\nCustomer ID: " + customerId;
     }
 }
 
@@ -63,10 +81,10 @@ class Booking {
     @Override
     public String toString() {
         return "Booking ID: " + bookingId +
-               "\nNumber Of Tickets: " + numberOfTickets +
-               "\nBookingDate: " + bookingDate +
-               "\nCustomer: " + customer +
-               "\nMovie: " + movie;
+                "\nMovie: " + movie.name +
+                "\nCustomer: " + customer.name +
+                "\nBookingDate: " + bookingDate +
+                "\nNumber Of Tickets: " + numberOfTickets;
     }
 }
 
@@ -76,19 +94,6 @@ class Manager {
 
 public class CinemaSimulator {
     public static void main(String[] args) {
-
-        Movie movie1 = new Movie("Avingir", "Action", 50, 100);
-        Customer c1 = new Customer("Alfred", "Ak1123");
-        Booking b1 = new Booking("Ak111", 5, "6/15/2026", c1, movie1);
-
-        System.out.println(movie1);
-        System.out.println();
-
-        System.out.println(c1);
-        System.out.println();
-        
-        System.out.println(b1);
-
 
     }
 }
