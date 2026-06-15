@@ -10,6 +10,10 @@ class Cinema {
         movies.add(movie);
     }
 
+    void removeMovie(Movie movie) {
+        movies.remove(movie);
+    }
+
     void addCostumer(Customer customer) {
         customers.add(customer);
     }
@@ -20,7 +24,7 @@ class Cinema {
 
     void viewAllMovies() {
         for (int i = 0; i < movies.size(); i++) {
-            System.out.println(i + ". " + movies.get(i).name);
+            System.out.println(i + 1 + ". " + movies.get(i).name);
         }
     }
 }
@@ -36,6 +40,10 @@ class Movie {
         this.genre = genre;
         this.ticketPrice = ticketPrice;
         this.availableSeats = availableSeats;
+    }
+
+    void displayDetails() {
+        System.out.println(this);
     }
 
     @Override
@@ -78,6 +86,10 @@ class Booking {
         this.movie = movie;
     }
 
+    void viewBookingDetails() {
+        System.out.println(this);
+    }
+
     @Override
     public String toString() {
         return "Booking ID: " + bookingId +
@@ -90,10 +102,31 @@ class Booking {
 
 class Manager {
     String name;
+
+    Manager(String name) {
+        this.name = name;
+    }
+
+    void addMovie(Cinema cinema, Movie movie) {
+        cinema.addMovie(movie);
+    }
+
+    void removeMovie(Cinema cinema, Movie movie) {
+        cinema.removeMovie(movie);
+    }
+
 }
 
 public class CinemaSimulator {
     public static void main(String[] args) {
+        Cinema cinema = new Cinema();
+        Movie movie1 = new Movie("Avingir", "Action", 150, 50);
+        Customer cos1 = new Customer("Akel", "AK12");
+        Booking book1 = new Booking("AK12", 5, "6/16/26", cos1, movie1);
 
+        cinema.addMovie(movie1);
+        cinema.addCostumer(cos1);
+        cinema.addBooking(book1);
+        cinema.viewAllMovies();
     }
 }
