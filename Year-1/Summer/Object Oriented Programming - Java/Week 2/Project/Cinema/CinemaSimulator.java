@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,15 +19,20 @@ class Cinema {
         customers.add(customer);
     }
 
-    void addBooking(Booking booking) {
-        bookings.add(booking);
-    }
-
     Movie getMovie(int index) {
         return movies.get(index);
     }
 
+    void bookTicket(Booking booking) {
+        bookings.add(booking);
+    }
+
     void viewAllMovies() {
+        if (movies.size() == 0) {
+            System.out.println("NO MOVIES AVAILABLE YET!");
+            return;
+        }
+
         System.out.println("\n===== LIST OF MOVIES =====");
         for (int i = 0; i < movies.size(); i++) {
             System.out.println(i + 1 + ". " + movies.get(i));
@@ -35,7 +41,12 @@ class Cinema {
     }
 
     void viewBookingTickets() {
-        System.out.println("===== LSIT OF BOOKINGS =====");
+        if (bookings.size() == 0) {
+            System.out.println("NO BOOKING YET!");
+            return;
+        }
+
+        System.out.println("\n===== LSIT OF BOOKINGS =====");
         for (int i = 0; i < bookings.size(); i++) {
             System.out.println(i + 1 + ". " + bookings.get(i));
             System.out.println();
@@ -58,6 +69,15 @@ class Movie {
 
     void displayDetails() {
         System.out.println(this);
+    }
+
+    boolean reserveSeats(int tickets) {
+        if (tickets > availableSeats) {
+            return false;
+        } else {
+            availableSeats -= tickets;
+            return true;
+        }
     }
 
     public String getName() {
@@ -86,12 +106,13 @@ class Movie {
 }
 
 class Customer {
+    private static int customerCounter = 333;
     private String name;
     private String customerId;
 
-    Customer(String name, String customerId) {
+    Customer(String name) {
         this.name = name;
-        this.customerId = customerId;
+        this.customerId = "CS22" + customerCounter++;
     }
 
     public String getName() {
@@ -110,14 +131,15 @@ class Customer {
 }
 
 class Booking {
+    private static int bookingCounter = 33;
     private String bookingId;
     private int numberOfTickets;
     private String bookingDate;
     private Customer customer;
     private Movie movie;
 
-    Booking(String bookingId, int numberOfTickets, String bookingDate, Customer customer, Movie movie) {
-        this.bookingId = bookingId;
+    Booking(int numberOfTickets, String bookingDate, Customer customer, Movie movie) {
+        this.bookingId = "BK23" + bookingCounter++;
         this.numberOfTickets = numberOfTickets;
         this.bookingDate = bookingDate;
         this.customer = customer;
@@ -185,12 +207,16 @@ public class CinemaSimulator {
         Customer customer;
 
         while (true) {
-            System.out.print("[1] View Movies\n[2] Add Movie\n[3] Book Tickets\n[4] View Bookings\n[5] Exit\nChoices: ");
+            System.out.println("\n===== AKERU'S MOVIE =====");
+            System.out
+                    .print("[1] View Movies\n[2] Add Movie\n[3] Book Tickets\n[4] View Bookings\n[5] Exit\nChoices: ");
             int menu = in.nextInt();
             in.nextLine();
 
             switch (menu) {
-                case 1 -> {cinema.viewAllMovies();}
+                case 1 -> {
+                    cinema.viewAllMovies();
+                }
                 case 2 -> {
                     System.out.println("==== ADD MOVIE ====");
                     System.out.print("Movie Name: ");
@@ -206,13 +232,15 @@ public class CinemaSimulator {
                     int movieAvailableSet = in.nextInt();
 
                     movie = new Movie(movieName, movieGenre, movieTicketPrice, movieAvailableSet);
-
                     cinema.addMovie(movie);
+                    
+                    System.out.println("MOVIE SUCCESFULLY ADDED!");
                 }
                 case 3 -> {
                     System.out.println("==== BOOK TICKETS ====");
-                    System.out.print("Booking ID: ");
-                    String bookingID = in.nextLine();
+
+                    System.out.print("Customer Name: ");
+                    String customerName = in.nextLine();
 
                     System.out.print("Number Of Tickets: ");
                     int numberOfTickets = in.nextInt();
@@ -221,26 +249,38 @@ public class CinemaSimulator {
                     System.out.print("Booking Date (ex. 6/16/2026): ");
                     String bookingDate = in.nextLine();
 
-                    System.out.print("Customer Name: ");
-                    String customerName = in.nextLine();
-
-                    System.out.print("Customer ID: ");
-                    String customerID = in.nextLine();
 
                     cinema.viewAllMovies();
 
                     System.out.print("\nEnter Movie Number: ");
                     int movieNumber = in.nextInt();
+
+                    if (movieNumber < 1 || movieNumber > cinema.movies.size()) {
+                        System.out.println("Invalid Movie Number!");
+                        break;
+                    }
+
+                    customer = new Customer(customerName);
+                    Movie selectedMovie = cinema.getMovie(movieNumber - 1);
+
                     
-                    customer = new Customer(customerName, customerID);
-                    book = new Booking(bookingID, numberOfTickets, bookingDate, customer, cinema.getMovie(movieNumber - 1));
-                    cinema.addBooking(book);
+                    if (selectedMovie.reserveSeats(numberOfTickets)) {
+                        book = new Booking(numberOfTickets, bookingDate, customer, selectedMovie);
+                        cinema.bookTicket(book);
+
+                        System.out.println("SUCCESFULLY BOOK!");
+                    }
+                    else {
+                        System.out.println("FAILED BOOKING!");
+                    }
+
                 }
                 case 4 -> {
                     cinema.viewBookingTickets();
                 }
-                default -> {}
+                default -> {
+                }
             }
         }
-    } 
+    }
 }
