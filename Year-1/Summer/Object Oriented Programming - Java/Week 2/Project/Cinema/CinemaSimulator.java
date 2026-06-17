@@ -36,7 +36,7 @@ class Cinema {
 
     void viewBookingTickets() {
         System.out.println("===== LSIT OF BOOKINGS =====");
-        for (int i = 0; i < movies.size(); i++) {
+        for (int i = 0; i < bookings.size(); i++) {
             System.out.println(i + 1 + ". " + bookings.get(i));
             System.out.println();
         }
@@ -44,10 +44,10 @@ class Cinema {
 }
 
 class Movie {
-    String name;
-    String genre;
-    int ticketPrice;
-    int availableSeats;
+    private String name;
+    private String genre;
+    private int ticketPrice;
+    private int availableSeats;
 
     Movie(String name, String genre, int ticketPrice, int availableSeats) {
         this.name = name;
@@ -60,6 +60,22 @@ class Movie {
         System.out.println(this);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
+
     @Override
     public String toString() {
         return "Movie Name: " + name +
@@ -70,12 +86,20 @@ class Movie {
 }
 
 class Customer {
-    String name;
-    String customerId;
+    private String name;
+    private String customerId;
 
     Customer(String name, String customerId) {
         this.name = name;
         this.customerId = customerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCustomerId() {
+        return customerId;
     }
 
     @Override
@@ -86,11 +110,11 @@ class Customer {
 }
 
 class Booking {
-    String bookingId;
-    int numberOfTickets;
-    String bookingDate;
-    Customer customer;
-    Movie movie;
+    private String bookingId;
+    private int numberOfTickets;
+    private String bookingDate;
+    private Customer customer;
+    private Movie movie;
 
     Booking(String bookingId, int numberOfTickets, String bookingDate, Customer customer, Movie movie) {
         this.bookingId = bookingId;
@@ -100,21 +124,45 @@ class Booking {
         this.movie = movie;
     }
 
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public int getNumberOfTickets() {
+        return numberOfTickets;
+    }
+
+    public String getBookingDate() {
+        return bookingDate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
     @Override
     public String toString() {
         return "Booking ID: " + bookingId +
-                "\nMovie: " + movie.name +
-                "\nCustomer: " + customer.name +
+                "\nMovie: " + movie.getName() +
+                "\nCustomer: " + customer.getName() +
                 "\nBookingDate: " + bookingDate +
                 "\nNumber Of Tickets: " + numberOfTickets;
     }
 }
 
 class Manager {
-    String name;
+    private String name;
 
     Manager(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     void addMovie(Cinema cinema, Movie movie) {
@@ -189,7 +237,7 @@ public class CinemaSimulator {
                     cinema.addBooking(book);
                 }
                 case 4 -> {
-                    book.viewBookingDetails();
+                    cinema.viewBookingTickets();
                 }
                 default -> {}
             }
