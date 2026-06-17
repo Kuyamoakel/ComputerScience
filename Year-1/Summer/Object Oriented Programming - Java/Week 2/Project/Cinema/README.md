@@ -22,3 +22,14 @@
 - Add interactive menu with `Scanner` for user input
 - Implement seat availability checks when booking
 - Improve error handling and input validation
+
+## WEDNESDAY
+
+# Project Status
+- added features: encapsulation
+
+# ⏭ Next Steps
+- Cinema should handle the logic behind Booking Logic.
+- Reduce sets are booking
+
+
