@@ -23,6 +23,10 @@ class Cinema {
         return movies.get(index);
     }
 
+    Customer getCustomer(int index) {
+        return customers.get(index);
+    }
+
     void bookTicket(Booking booking) {
         bookings.add(booking);
     }
@@ -260,7 +264,16 @@ public class CinemaSimulator {
                         break;
                     }
 
-                    customer = new Customer(customerName);
+                    for (int i = 0; i < cinema.customers.size(); i++) {
+                        if (customerName.equalsIgnoreCase(cinema.customers.get(i).getName())) {
+                            customer = cinema.customers.get(i);
+                        }
+                        else {
+                            customer = new Customer(customerName);
+                        }
+                    }
+                    
+
                     Movie selectedMovie = cinema.getMovie(movieNumber - 1);
 
                     
