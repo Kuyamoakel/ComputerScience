@@ -284,7 +284,7 @@ public class CinemaSimulator {
                     if (numberOfTickets <= 0) {
                         System.out.println("Error no less than 0 for number of tickets!");
                         break;
-                    } 
+                    }
 
                     System.out.print("Booking Date (ex. 6/16/2026): ");
                     String bookingDate = in.nextLine();
@@ -300,12 +300,20 @@ public class CinemaSimulator {
 
                     Customer customer = cinema.findCustomerByName(customerName);
 
+                    for (Customer customers : cinema.customers) {
+                        System.out.println(customer.getName());
+                        if (!customer.getName().equalsIgnoreCase(customers.getName())) {
+                            cinema.addCostumer(customer);
+                        }
+                    }
+
+                    System.out.println(customer.getName());
+
                     Movie selectedMovie = cinema.getMovie(movieNumber - 1);
 
                     if (selectedMovie.reserveSeats(numberOfTickets)) {
                         book = new Booking(numberOfTickets, bookingDate, customer, selectedMovie);
                         cinema.bookTicket(book);
-
                         System.out.println("SUCCESFULLY BOOK!");
                     } else {
                         System.out.println("FAILED BOOKING!");
@@ -314,6 +322,10 @@ public class CinemaSimulator {
                 }
                 case 4 -> {
                     cinema.viewBookingTickets();
+                }
+                case 5 -> {
+                    System.out.println("Thank you for using this!");
+                    return;
                 }
                 default -> {
                 }
