@@ -225,7 +225,6 @@ public class CinemaSimulator {
         Cinema cinema = new Cinema();
         Movie movie;
         Booking book;
-        Customer customer;
 
         while (true) {
             System.out.println("\n===== AKERU'S MOVIE =====");
@@ -254,11 +253,16 @@ public class CinemaSimulator {
 
                     movie = new Movie(movieName, movieGenre, movieTicketPrice, movieAvailableSet);
                     cinema.addMovie(movie);
-                    
+
                     System.out.println("MOVIE SUCCESFULLY ADDED!");
                 }
                 case 3 -> {
                     System.out.println("==== BOOK TICKETS ====");
+
+                    if (cinema.movies.isEmpty()) {
+                        System.out.println("CANNOT BOOK TODAY!");
+                        break;
+                    }
 
                     System.out.print("Customer Name: ");
                     String customerName = in.nextLine();
@@ -267,9 +271,13 @@ public class CinemaSimulator {
                     int numberOfTickets = in.nextInt();
                     in.nextLine();
 
+                    if (numberOfTickets <= 0) {
+                        System.out.println("Error no less than 0 for number of tickets!");
+                        break;
+                    } 
+
                     System.out.print("Booking Date (ex. 6/16/2026): ");
                     String bookingDate = in.nextLine();
-
 
                     cinema.viewAllMovies();
 
@@ -279,19 +287,17 @@ public class CinemaSimulator {
                     if (!cinema.isValidMovieIndex(movieNumber)) {
                         break;
                     }
-                    
-                    customer = cinema.findCustomerByName(customerName);
+
+                    Customer customer = cinema.findCustomerByName(customerName);
 
                     Movie selectedMovie = cinema.getMovie(movieNumber - 1);
 
-                    
                     if (selectedMovie.reserveSeats(numberOfTickets)) {
                         book = new Booking(numberOfTickets, bookingDate, customer, selectedMovie);
                         cinema.bookTicket(book);
 
                         System.out.println("SUCCESFULLY BOOK!");
-                    }
-                    else {
+                    } else {
                         System.out.println("FAILED BOOKING!");
                     }
 
