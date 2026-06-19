@@ -248,8 +248,18 @@ public class CinemaSimulator {
                     System.out.print("Ticket Price: ");
                     int movieTicketPrice = in.nextInt();
 
+                    if (movieTicketPrice <= 0) {
+                        System.out.println("Ticket Price must not be less than 0");
+                        break;
+                    }
+
                     System.out.print("Available Sets: ");
                     int movieAvailableSet = in.nextInt();
+
+                    if (movieAvailableSet <= 0) {
+                        System.out.println("Available Sets must not be less than 0");
+                        break;
+                    }
 
                     movie = new Movie(movieName, movieGenre, movieTicketPrice, movieAvailableSet);
                     cinema.addMovie(movie);
