@@ -31,6 +31,23 @@ class Cinema {
         bookings.add(booking);
     }
 
+    boolean isValidMovieIndex(int index) {
+        if (index < 1 || index > movies.size()) {
+            System.out.println("Invalid Choice!");
+            return false;
+        }
+        return true;
+    }
+
+    Customer findCustomerByName(String name) {
+        for (Customer customer : customers) {
+            if (customer.getName().equalsIgnoreCase(name)) {
+                return customer;
+            }
+        }
+        return new Customer(name);
+    }
+
     void viewAllMovies() {
         if (movies.size() == 0) {
             System.out.println("NO MOVIES AVAILABLE YET!");
@@ -259,20 +276,11 @@ public class CinemaSimulator {
                     System.out.print("\nEnter Movie Number: ");
                     int movieNumber = in.nextInt();
 
-                    if (movieNumber < 1 || movieNumber > cinema.movies.size()) {
-                        System.out.println("Invalid Movie Number!");
+                    if (!cinema.isValidMovieIndex(movieNumber)) {
                         break;
                     }
-
-                    for (int i = 0; i < cinema.customers.size(); i++) {
-                        if (customerName.equalsIgnoreCase(cinema.customers.get(i).getName())) {
-                            customer = cinema.customers.get(i);
-                        }
-                        else {
-                            customer = new Customer(customerName);
-                        }
-                    }
                     
+                    customer = cinema.findCustomerByName(customerName);
 
                     Movie selectedMovie = cinema.getMovie(movieNumber - 1);
 
