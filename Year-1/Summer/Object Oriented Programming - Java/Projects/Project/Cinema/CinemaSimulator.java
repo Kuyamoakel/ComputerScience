@@ -45,7 +45,7 @@ class Cinema {
                 return customer;
             }
         }
-        return new Customer(name);
+        return null;
     }
 
     void viewAllMovies() {
@@ -300,14 +300,14 @@ public class CinemaSimulator {
 
                     Customer customer = cinema.findCustomerByName(customerName);
 
-                    for (Customer customers : cinema.customers) {
-                        System.out.println(customer.getName());
-                        if (!customer.getName().equalsIgnoreCase(customers.getName())) {
-                            cinema.addCostumer(customer);
-                        }
-                    }
+                    if (customer == null) {
+                        customer = new Customer(customerName);
+                        cinema.addCostumer(customer);
 
-                    System.out.println(customer.getName());
+                        System.out.println("New customer created: " + customer.getName());
+                    } else {
+                        System.out.println("Exisiting Customer Found: " + customer.getName());
+                    }
 
                     Movie selectedMovie = cinema.getMovie(movieNumber - 1);
 
