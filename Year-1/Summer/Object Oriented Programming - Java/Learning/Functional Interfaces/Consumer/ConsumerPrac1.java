@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.function.*;
 
-public class ConsumerDemo {
+public class ConsumerPrac1 {
     public static void main(String[] args) {
         List<String> names = List.of("Akel", "Steph", "Kurt");
 
