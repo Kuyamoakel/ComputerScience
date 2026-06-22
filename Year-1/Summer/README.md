@@ -2,7 +2,6 @@
 
 <p align="center">
   <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWJxY2N6Z3hpaTBhcm8xdjB1YWQ2a2N0NDdoemdkN2x1Z3Y0Njc1OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1wR4V5Y0Wqjn0Jgh2k/giphy.gif" 
-       alt="Computer Science Journey GIF"
-       width="400"
-       style="border-radius:15px;" />
+       alt="CS Journey GIF"
+       width="400" />
 </p>
