@@ -1,4 +1,4 @@
-public class PairClosest {
+public class FindPairClosestToTarget {
     public static void main(String[] args) {
         
         int[] nums = {1, 3, 5, 8, 10};
