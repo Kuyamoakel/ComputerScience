@@ -1,4 +1,4 @@
-public class Problem {
+public class FindPairSum {
     public static void main(String[] args) {
 
         
