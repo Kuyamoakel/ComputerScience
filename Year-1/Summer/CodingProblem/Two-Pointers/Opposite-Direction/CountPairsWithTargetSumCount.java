@@ -1,4 +1,4 @@
-public class CountPairs {
+public class CountPairsWithTargetSumCount {
     public static void main(String[] args) {
 
         // Count how many pairs equal the target.
