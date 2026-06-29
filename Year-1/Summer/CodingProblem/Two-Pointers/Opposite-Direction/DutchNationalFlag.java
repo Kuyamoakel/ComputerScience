@@ -5,6 +5,7 @@ public class DutchNationalFlag {
         sortColors(colors);
     }
     static void sortColors(int[] colors) {
+        // 3 pointers
         int current = 0;
         int right = 0;
         int left = colors.length - 1;
@@ -26,6 +27,7 @@ public class DutchNationalFlag {
             }
 
             else {
+                // Swapping
                 int temp = colors[left];
                 colors[left] = colors[current];
                 colors[current] = temp;
@@ -33,6 +35,7 @@ public class DutchNationalFlag {
                 left--;
             }
         }
+        
         for (int color : colors) {
             System.out.print(color + " ");
         }
