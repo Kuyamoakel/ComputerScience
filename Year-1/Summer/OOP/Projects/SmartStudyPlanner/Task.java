@@ -23,7 +23,7 @@ public class Task {
     private LocalDate createdDate;
     private LocalDate deadline;
 
-    Task(String title, String description, Priority priority, Subject subject, boolean completed, LocalDate deadline) {
+    public Task(String title, String description, Priority priority, Subject subject, boolean completed, LocalDate deadline) {
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -42,7 +42,7 @@ public class Task {
         return description;
     }
 
-    public boolean getCompleted() {
+    public boolean isCompleted() {
         return completed;
     }
 
@@ -54,7 +54,7 @@ public class Task {
         return deadline;
     }
 
-    public Priority getPriorty() {
+    public Priority getPriority() {
         return priority;
     }
 
@@ -86,6 +86,6 @@ public class Task {
                "\nCompleted    : " + completed +
                "\nCreatedDate  : " + createdDate +
                "\nDeadLine     : " + deadline + 
-               "\n--------------------------";
+               "\n----------------------------";
     }
 }
