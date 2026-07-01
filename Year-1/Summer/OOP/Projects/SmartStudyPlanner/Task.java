@@ -46,6 +46,14 @@ public class Task {
         this.deadline = deadline;
     }
 
+    public void complete() {
+        this.completed = true;
+    }
+
+    public void reOpen() {
+        this.completed = false;
+    }
+
     // Getters
     public String getTitle() {
         return title;
