@@ -65,10 +65,22 @@ public class Task {
     // Setters
     
     public void setTitle(String title) {
+        
+        if (title.isEmpty()) {
+            System.out.println("Title must not be empty!");
+            return;
+        }
+
         this.title = title;
     }
 
     public void setDescription(String description) {
+
+        if (description.isEmpty()) {
+            System.out.println("Description must not be empty!");
+            return;
+        }
+
         this.description = description;
     }
 
