@@ -37,7 +37,6 @@ public class Task {
             throw new IllegalArgumentException("Deadline cannot be in the past!");
         }
 
-
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -80,9 +79,8 @@ public class Task {
     
     public void setTitle(String title) {
         
-        if (title.isEmpty()) {
-            System.out.println("Title must not be empty!");
-            return;
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Title must not be empty!");
         }
 
         this.title = title;
@@ -90,9 +88,8 @@ public class Task {
 
     public void setDescription(String description) {
 
-        if (description.isEmpty()) {
-            System.out.println("Description must not be empty!");
-            return;
+        if (description == null || description.isBlank()) {
+            throw new IllegalArgumentException("Description must not be empty!");
         }
 
         this.description = description;
