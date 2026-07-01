@@ -24,6 +24,20 @@ public class Task {
     private LocalDate deadline;
 
     public Task(String title, String description, Priority priority, Subject subject, LocalDate deadline) {
+
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Task name cannot be empty!");
+        }
+
+        if (description == null || description.isBlank()) {
+            throw new IllegalArgumentException("Description cannot be empty!");
+        } 
+
+        if (deadline.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Deadline cannot be in the past!");
+        }
+
+
         this.title = title;
         this.description = description;
         this.priority = priority;

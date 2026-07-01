@@ -5,9 +5,9 @@ public class Main {
         
         Planner planner = new Planner();
 
-        // Task task = new Task("Yes", "Yes", Priority.HIGH, Subject.CODING, false, LocalDate.of(2026, 7, 1));
+        Task task = new Task("Yes", "Yes", Priority.HIGH, Subject.CODING, LocalDate.of(2026, 6, 1));
 
-        // planner.addTask(task);
+        planner.addTask(task);
 
         planner.displayTasks();
     }
