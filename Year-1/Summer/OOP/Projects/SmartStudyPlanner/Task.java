@@ -23,12 +23,12 @@ public class Task {
     private LocalDate createdDate;
     private LocalDate deadline;
 
-    public Task(String title, String description, Priority priority, Subject subject, boolean completed, LocalDate deadline) {
+    public Task(String title, String description, Priority priority, Subject subject, LocalDate deadline) {
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.subject = subject;
-        this.completed = completed;
+        this.completed = false;
         this.createdDate = LocalDate.now();
         this.deadline = deadline;
     }
