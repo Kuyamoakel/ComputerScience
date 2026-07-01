@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 enum Priority {
     LOW,
     MEDIUM,
@@ -17,17 +19,17 @@ public class Task {
     private String description;
     private Priority priority;
     private Subject subject;
-    private String completed;
-    private String createdDate;
-    private String deadline;
+    private boolean completed;
+    private LocalDate createdDate;
+    private LocalDate deadline;
 
-    Task(String title, String description, Priority priority, Subject subject, String completed, String createdDate, String deadline) {
+    Task(String title, String description, Priority priority, Subject subject, boolean completed, LocalDate deadline) {
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.subject = subject;
         this.completed = completed;
-        this.createdDate = createdDate;
+        this.createdDate = LocalDate.now();
         this.deadline = deadline;
     }
 
@@ -40,16 +42,24 @@ public class Task {
         return description;
     }
 
-    public String getCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
 
-    public String getCreatedDate() {
+    public LocalDate getCreatedDate() {
         return createdDate;
     }
 
-    public String getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
+    }
+
+    public Priority getPriorty() {
+        return priority;
+    }
+
+    public Subject getSubject() {
+        return subject;
     }
 
     // Setters
@@ -62,26 +72,20 @@ public class Task {
         this.description = description;
     }
 
-    public void setComplted(String completed) {
+    public void setCompleted(boolean completed) {
         this.completed = completed;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
     }
 
     @Override
     public String toString() {
-        return "Title: " + title +
-               "\nDescription: " + description +
-               "\nPriority: " + priority +
-               "\nSubject: " + subject +
-               "\nCompleted: " + completed +
-               "\nCreatedDate: " + createdDate +
-               "\nDeadLine: " + deadline;
+        return "--------------------------" +
+               "\nTitle        : " + title +
+               "\nDescription  : " + description +
+               "\nPriority     : " + priority +
+               "\nSubject      : " + subject +
+               "\nCompleted    : " + completed +
+               "\nCreatedDate  : " + createdDate +
+               "\nDeadLine     : " + deadline + 
+               "\n--------------------------";
     }
 }

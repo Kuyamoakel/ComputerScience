@@ -1,10 +1,14 @@
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
         
         Planner planner = new Planner();
 
-        planner.addTask("Akel", "awefaw", Priority.HIGH, Subject.CODING, "No", "JUNE 30", "JULY1");
+        // Task task = new Task("Yes", "Yes", Priority.HIGH, Subject.CODING, false, LocalDate.of(2026, 7, 1));
 
-        planner.displayTask();
+        // planner.addTask(task);
+
+        planner.displayTasks();
     }
 }
