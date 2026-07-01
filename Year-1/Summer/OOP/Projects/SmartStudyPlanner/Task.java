@@ -37,6 +37,14 @@ public class Task {
             throw new IllegalArgumentException("Deadline cannot be in the past!");
         }
 
+        if (priority == null) {
+            throw new IllegalArgumentException("Priority cannot be empty!");
+        }
+
+        if (subject == null) {
+            throw new IllegalArgumentException("Subject cannot be empty!");
+        }
+
         this.title = title;
         this.description = description;
         this.priority = priority;
