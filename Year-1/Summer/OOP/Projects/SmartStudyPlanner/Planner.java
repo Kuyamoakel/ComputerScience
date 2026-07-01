@@ -17,7 +17,7 @@ class Planner {
 
         System.out.println("CURRENT TASK 📝");
         for(Task task : tasks) {
-            System.out.println("" + task);
+            System.out.println(task);
         }
     }
         
