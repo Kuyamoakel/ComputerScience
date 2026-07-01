@@ -5,6 +5,12 @@ class Planner {
     private final List<Task> tasks = new ArrayList<>();
 
     public void addTask(Task task) {
+
+        if (task == null) {
+            System.out.println("Invalid Task!");
+            return;
+        }
+        
         tasks.add(task);
     }
 
