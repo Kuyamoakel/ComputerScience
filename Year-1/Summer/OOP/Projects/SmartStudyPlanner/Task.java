@@ -95,10 +95,6 @@ public class Task {
         this.description = description;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
-
     @Override
     public String toString() {
         return "--------------------------" +
