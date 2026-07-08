@@ -14,7 +14,7 @@ class Planner {
         tasks.add(task);
     }
 
-    public void removeTask(Task id) {
+    public void removeTask(String id) {
 
         boolean isFound = false;
         
@@ -29,9 +29,17 @@ class Planner {
         }
 
         for (Task task : tasks) {
-            if (task.)
+            if (task.getId().equals(id)) {
+                isFound = true;
+                tasks.remove(task);
+                break;
+            }
         }
 
+        if (!isFound) {
+            System.out.println("Task not found.");
+            return;
+        }
 
     }
 
