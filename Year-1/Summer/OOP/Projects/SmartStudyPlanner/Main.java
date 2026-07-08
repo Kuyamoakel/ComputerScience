@@ -5,10 +5,16 @@ public class Main {
         
         Planner planner = new Planner();
 
-        Task task = new Task("Yes", "Yes", Priority.HIGH, Subject.CODING, LocalDate.of(2026, 7, 1));
+        Task task = new Task("Yes", "Yes", Priority.HIGH, Subject.CODING, LocalDate.of(2026, 8, 10));
 
         planner.addTask(task);
 
         planner.displayTasks();
+
+        planner.removeTask(task);
+
+        planner.displayTasks();
+
+
     }
 }
