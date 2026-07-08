@@ -70,6 +70,10 @@ public class Task {
         return title;
     } 
 
+    public String getId() {
+        return taskId;
+    }
+
     public String getDescription() {
         return description;
     }
