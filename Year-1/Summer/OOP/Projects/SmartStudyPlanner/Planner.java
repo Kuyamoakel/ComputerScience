@@ -18,15 +18,16 @@ class Planner {
 
         boolean isFound = false;
         
-        if (tasks.isEmpty()) {
-            System.out.println("No Tasks Avaialable!");
-            return;
-        }
-
-        if (id == null) {
+        if (id == null || id.isBlank()) {
             System.out.println("Invalid ID!");
             return;
         }
+        
+        if (tasks.isEmpty()) {
+            System.out.println("No Tasks available.");
+            return;
+        }
+
 
         for (Task task : tasks) {
             if (task.getId().equals(id)) {
@@ -38,7 +39,6 @@ class Planner {
 
         if (!isFound) {
             System.out.println("Task not found.");
-            return;
         }
 
     }
