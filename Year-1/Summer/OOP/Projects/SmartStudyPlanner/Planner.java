@@ -25,7 +25,6 @@ class Planner {
             return false;
         }
 
-
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getId().equalsIgnoreCase(id)) {
                 tasks.remove(i);
