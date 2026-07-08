@@ -35,12 +35,34 @@ Smart Study Planner is a Java OOP personal project that helps me to organize my 
 - 📚 Every class should protect its own invariants.
 - 📚 IllegalArgumentException is better than printing error.
 
+### DAY 3 - `07-08-2026`
+
+- ✅ Implemented automatic task ID generation.
+- ✅ Added `removeTask(String id)` feature.
+- ✅ Refactored task removal to use unique IDs instead of task titles.
+- ✅ Replaced enhanced `for` loop with an index-based loop for safe removal from `ArrayList`.
+- ✅ Refactored `removeTask()` to return `boolean` instead of printing success/failure messages.
+- ✅ Improved separation of concerns by moving user feedback to `Main.java`.
+- ✅ Added input validation for task IDs.
+- ✅ Continued applying defensive programming and object validation principles.
+
+### Lessons Learned
+
+- 📚 Every object should have a unique identifier.
+- 📚 Never modify an `ArrayList` inside an enhanced `for` loop.
+- 📚 Business logic should return results, while the UI decides how to present them.
+- 📚 A method can communicate success or failure through its return value.
+- 📚 Simpler code is often better—eliminating unnecessary variables improved readability.
+- 📚 Index-based loop, iterator, `removeIf()`. these are advanced future to be applied.
+
 ## Completed Features
+
 - [x] Add Task
+- [x] Remove Task
 - [x] Display Tasks
 - [x] Input Validation
+- [x] Automatic Task ID Generation
 - [x] Task Completion
-- [ ] Remove Task
 - [ ] Update Task
 - [ ] Search by Subject
 - [ ] Search by Priority
