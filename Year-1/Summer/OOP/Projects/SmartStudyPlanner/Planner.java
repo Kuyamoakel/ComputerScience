@@ -14,28 +14,27 @@ class Planner {
         tasks.add(task);
     }
 
-    public void removeTask(String id) {
+    public boolean removeTask(String id) {
         
         if (id == null || id.isBlank()) {
-            System.out.println("Invalid ID!");
-            return;
+            throw new IllegalArgumentException("Id cannot be empty or null!");
         }
 
         if (tasks.isEmpty()) {
             System.out.println("No Tasks available.");
-            return;
+            return false;
         }
 
 
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getId().equalsIgnoreCase(id)) {
                 tasks.remove(i);
-                return;
+                return true;
             }
         }
 
         // i figure no need for boolean just straight print is just fine!
-        System.out.println("Task not found.");
+        return false;
 
     }
 
