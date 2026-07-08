@@ -11,7 +11,7 @@ public class Main {
 
         planner.displayTasks();
 
-        if (planner.removeTask("Sr300")) {
+        if (planner.removeTask("Sr330")) {
             System.out.println("Task removed.");
         }
         else {

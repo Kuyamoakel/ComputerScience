@@ -7,8 +7,7 @@ class Planner {
     public void addTask(Task task) {
 
         if (task == null) {
-            System.out.println("Invalid Task!");
-            return;
+            throw new IllegalArgumentException("Task must not be null!");
         }
         
         tasks.add(task);
