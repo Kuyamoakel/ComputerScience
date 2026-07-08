@@ -11,7 +11,7 @@ public class Main {
 
         planner.displayTasks();
 
-        planner.removeTask(task);
+        planner.removeTask("Sr330");
 
         planner.displayTasks();
 

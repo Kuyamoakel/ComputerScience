@@ -123,6 +123,7 @@ public class Task {
         return "--------------------------" +
                "\nTitle        : " + title +
                "\nDescription  : " + description +
+               "\nTaskID       : " + taskId +
                "\nPriority     : " + priority +
                "\nSubject      : " + subject +
                "\nCompleted    : " + completed +
