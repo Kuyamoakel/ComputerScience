@@ -14,27 +14,25 @@ class Planner {
         tasks.add(task);
     }
 
-    public void removeTask(Task task) {
-    
-        if (task == null) {
-            System.out.println("Invalid Task!");
-            return;
-        }
+    public void removeTask(Task id) {
 
+        boolean isFound = false;
+        
         if (tasks.isEmpty()) {
-            System.out.println("No Tasks Available!");
+            System.out.println("No Tasks Avaialable!");
             return;
         }
 
-        for (Task taskToRemove : tasks) {
-            if (taskToRemove.getTitle().equalsIgnoreCase(task.getTitle())) {
-                tasks.remove(taskToRemove);
-            }
-            else {
-                System.out.println("Did not Found!");
-            }
-
+        if (id == null) {
+            System.out.println("Invalid ID!");
+            return;
         }
+
+        for (Task task : tasks) {
+            if (task.)
+        }
+
+
     }
 
     public void displayTasks() {
