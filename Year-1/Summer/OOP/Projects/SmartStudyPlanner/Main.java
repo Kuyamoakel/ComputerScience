@@ -11,7 +11,12 @@ public class Main {
 
         planner.displayTasks();
 
-        planner.removeTask("Sr330");
+        if (planner.removeTask("Sr300")) {
+            System.out.println("Task removed.");
+        }
+        else {
+            System.out.println("Task not found.");
+        }
 
         planner.displayTasks();
 
