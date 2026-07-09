@@ -29,8 +29,6 @@ class Planner {
             return false;
         }
 
-        boolean removed = tasks.removeIf(task -> task.getId().equalsIgnoreCase(id));
-
-        return removed;
+        return tasks.removeIf(task -> task.getId().equalsIgnoreCase(id));
     }   
 }
