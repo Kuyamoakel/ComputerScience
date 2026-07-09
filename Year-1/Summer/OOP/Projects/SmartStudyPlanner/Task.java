@@ -15,16 +15,16 @@ enum Subject {
 }
 
 public class Task {
-    private static int idCounter = 0;
-    private static final String PREFIX = "SR";
-    private String id;
     private String title;
     private String description;
-    private Priority priority;
-    private Subject subject;
     private boolean completed;
-    private LocalDate createdDate;
-    private LocalDate deadline;
+    private static final String PREFIX = "SR";
+    private static int idCounter = 0;
+    private final String id;
+    private final Priority priority;
+    private final Subject subject;
+    private final LocalDate createdDate;
+    private final LocalDate deadline;
 
     public Task(String title, String description, Priority priority, Subject subject, LocalDate deadline) {
 
