@@ -26,7 +26,6 @@ class Planner {
         }
 
         if (tasks.isEmpty()) {
-            System.out.println("No Tasks available.");
             return false;
         }
 
