@@ -4,6 +4,11 @@ import java.util.List;
 class Planner {
     private final List<Task> tasks = new ArrayList<>();
 
+    // now planner only provides data, not to print it to console.
+    public List<Task> getTask() {
+        return tasks;
+    }
+
     public void addTask(Task task) {
 
         if (task == null) {
@@ -34,19 +39,5 @@ class Planner {
         // i figure no need for boolean just straight print is just fine!
         return false;
 
-    }
-
-    public void displayTasks() {
-
-        if (tasks.isEmpty()) {
-            System.out.println("No Tasks Avaialable!");
-            return;
-        }
-
-        System.out.println("CURRENT TASK 📝");
-        for(Task task : tasks) {
-            System.out.println(task);
-        }
-    }
-        
+    }   
 }
