@@ -8,8 +8,9 @@ public class Main {
         Task task = new Task("Yes", "Yes", Priority.HIGH, Subject.CODING, LocalDate.of(2026, 8, 10));
 
         planner.addTask(task);
-
-        planner.displayTasks();
+        for (Task tasks : planner.getTask()) {
+            System.out.println(tasks);
+        }
 
         if (planner.removeTask("Sr330")) {
             System.out.println("Task removed.");
@@ -18,7 +19,6 @@ public class Main {
             System.out.println("Task not found.");
         }
 
-        planner.displayTasks();
 
 
     }
