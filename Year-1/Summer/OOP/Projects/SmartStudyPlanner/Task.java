@@ -35,11 +35,7 @@ public class Task {
         if (description == null || description.isBlank()) {
             throw new IllegalArgumentException("Description cannot be empty!");
         } 
-
-        if (deadline.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException("Deadline cannot be in the past!");
-        }
-
+        
         if (priority == null) {
             throw new IllegalArgumentException("Priority cannot be empty!");
         }
@@ -47,6 +43,11 @@ public class Task {
         if (subject == null) {
             throw new IllegalArgumentException("Subject cannot be empty!");
         }
+
+        if (deadline.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Deadline cannot be in the past!");
+        }
+
 
         this.title = title;
         this.description = description;
@@ -121,15 +122,33 @@ public class Task {
 
     @Override
     public String toString() {
-        return "--------------------------" +
-               "\nTitle        : " + title +
-               "\nDescription  : " + description +
-               "\nTaskID       : " + taskId +
-               "\nPriority     : " + priority +
-               "\nSubject      : " + subject +
-               "\nCompleted    : " + completed +
-               "\nCreatedDate  : " + createdDate +
-               "\nDeadLine     : " + deadline + 
-               "\n----------------------------";
+
+        return """
+        --------------------------
+        Title        :  %s
+        Description  :  %s 
+        TaskID       :  %s
+        Priority     :  %s
+        Subject      :  %s
+        Completed    :  %s 
+        CreatedDate  :  %s
+        DeadLine     :  %s
+        --------------------------
+                """.formatted(title, description, taskId, priority, subject, completed, createdDate, deadline);
+
+
+
+
+
+        // return "--------------------------" +
+        //        "\nTitle        : " + title +
+        //        "\nDescription  : " + description +
+        //        "\nTaskID       : " + taskId +
+        //        "\nPriority     : " + priority +
+        //        "\nSubject      : " + subject +
+        //        "\nCompleted    : " + completed +
+        //        "\nCreatedDate  : " + createdDate +
+        //        "\nDeadLine     : " + deadline + 
+        //        "\n----------------------------";
     }
 }
