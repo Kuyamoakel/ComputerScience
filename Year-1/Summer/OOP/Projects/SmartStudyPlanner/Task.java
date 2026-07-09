@@ -23,7 +23,7 @@ public class Task {
     private boolean completed;
     private Priority priority;
     private Subject subject;
-    private LocalDate createdDate;
+    private final LocalDate createdDate;
     private LocalDate deadline;
 
     public Task(String title, String description, Priority priority, Subject subject, LocalDate deadline) {
