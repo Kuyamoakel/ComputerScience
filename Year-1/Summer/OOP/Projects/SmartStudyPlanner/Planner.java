@@ -6,7 +6,8 @@ class Planner {
 
     // now planner only provides data, not to print it to console.
     public List<Task> getTask() {
-        return tasks;
+        // to prevent .clear() direct access in code
+        return List.copyOf(tasks);
     }
 
     public void addTask(Task task) {
