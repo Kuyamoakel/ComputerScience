@@ -120,6 +120,37 @@ public class Task {
         this.description = description;
     }
 
+    public void setPriority(Priority priority) {
+
+        if (priority == null) {
+            throw new IllegalArgumentException("Priort must not be null!");
+        }
+
+        this.priority = priority;
+    }
+
+    public void setSubject(Subject subject) {
+
+        if (subject == null) {
+            throw new IllegalArgumentException("Subject must not be null!");
+        }
+
+        this.subject = subject;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+
+        if (deadline == null) {
+            throw new IllegalArgumentException("deadline must not be null!");
+        }
+
+        if (deadline.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Deadline cannot be in the past!");
+        } 
+
+        this.deadline = deadline;
+    }
+
     @Override
     public String toString() {
 
