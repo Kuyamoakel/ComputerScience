@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,5 +31,71 @@ class Planner {
         }
 
         return tasks.removeIf(task -> task.getId().equalsIgnoreCase(id));
-    }   
+    }
+
+    public void updateTask(String id) {
+
+        if (id == null || id.isBlank()) {
+            throw new IllegalArgumentException("Id must not be null!");
+        }
+
+        if (tasks.isEmpty()) {
+            return;
+        }
+    }
+
+    public boolean updateTitle(String id, String title) {
+        return tasks.stream()
+            .filter(task -> task.getId().equalsIgnoreCase(id))
+            .findFirst()
+            .map(task -> {
+                task.setTitle(title);
+                return true;
+            })
+            .orElse(false);
+    }
+
+    public boolean updateDescription(String id, String title) {
+        return tasks.stream()
+            .filter(task -> task.getId().equalsIgnoreCase(id))
+            .findFirst()
+            .map(task -> {
+                task.setDescription(title);
+                return true;
+            })
+            .orElse(false);
+    }
+
+    public boolean updatePriority(String id, Priority priority) {
+        return tasks.stream()
+            .filter(task -> task.getId().equalsIgnoreCase(id))
+            .findFirst()
+            .map(task -> {
+                task.setPriority(priority);
+                return true;
+            })
+            .orElse(false);
+    }
+
+    public boolean updateSubject(String id, Subject subject) {
+        return tasks.stream()
+            .filter(task -> task.getId().equalsIgnoreCase(id))
+            .findFirst()
+            .map(task -> {
+                task.setSubject(subject);
+                return true;
+            })
+            .orElse(false);
+    }
+
+    public boolean updateDeadLine(String id, LocalDate deadline) {
+        return tasks.stream()
+            .filter(task -> task.getId().equalsIgnoreCase(id))
+            .findFirst()
+            .map(task -> {
+                task.setDeadline(deadline);
+                return true;
+            })
+            .orElse(false);
+    }
 }
