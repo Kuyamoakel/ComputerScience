@@ -30,15 +30,8 @@ class Planner {
             return false;
         }
 
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getId().equalsIgnoreCase(id)) {
-                tasks.remove(i);
-                return true;
-            }
-        }
+        boolean removed = tasks.removeIf(tasks -> tasks.getId().equalsIgnoreCase(id));
 
-        // i figure no need for boolean just straight print is just fine!
-        return false;
-
+        return removed;
     }   
 }
