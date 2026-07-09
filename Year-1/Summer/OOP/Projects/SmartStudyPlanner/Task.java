@@ -16,6 +16,7 @@ enum Subject {
 
 public class Task {
     private static int idCounter = 0;
+    private static final String PREFIX = "SR";
     private String taskId;
     private String title;
     private String description;
@@ -49,7 +50,7 @@ public class Task {
 
         this.title = title;
         this.description = description;
-        this.taskId = "Sr33" + idCounter++;
+        this.taskId = PREFIX + idCounter++;
         this.priority = priority;
         this.subject = subject;
         this.completed = false;
