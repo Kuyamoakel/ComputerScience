@@ -8,7 +8,7 @@ public class Main {
         Task task = new Task("Yes", "Yes", Priority.HIGH, Subject.CODING, LocalDate.of(2026, 8, 10));
 
         planner.addTask(task);
-        for (Task tasks : planner.getTask()) {
+        for (Task tasks : planner.getTasks()) {
             System.out.println(tasks);
         }
 
