@@ -134,21 +134,8 @@ public class Task {
         CreatedDate  :  %s
         DeadLine     :  %s
         --------------------------
-                """.formatted(title, description, taskId, priority, subject, completed, createdDate, deadline);
-
-
-
-
-
-        // return "--------------------------" +
-        //        "\nTitle        : " + title +
-        //        "\nDescription  : " + description +
-        //        "\nTaskID       : " + taskId +
-        //        "\nPriority     : " + priority +
-        //        "\nSubject      : " + subject +
-        //        "\nCompleted    : " + completed +
-        //        "\nCreatedDate  : " + createdDate +
-        //        "\nDeadLine     : " + deadline + 
-        //        "\n----------------------------";
+                """.formatted(title, description, taskId,
+                              priority, subject, completed,
+                              createdDate, deadline);
     }
 }
