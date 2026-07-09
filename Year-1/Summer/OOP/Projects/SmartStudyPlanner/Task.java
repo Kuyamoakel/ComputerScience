@@ -63,7 +63,7 @@ public class Task {
         this.completed = true;
     }
 
-    public void reOpen() {
+    public void reopen() {
         this.completed = false;
     }
 
