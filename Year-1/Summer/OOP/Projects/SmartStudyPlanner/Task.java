@@ -17,7 +17,7 @@ enum Subject {
 public class Task {
     private static int idCounter = 0;
     private static final String PREFIX = "SR";
-    private String taskId;
+    private String id;
     private String title;
     private String description;
     private Priority priority;
@@ -51,7 +51,7 @@ public class Task {
 
         this.title = title;
         this.description = description;
-        this.taskId = PREFIX + idCounter++;
+        this.id = PREFIX + idCounter++;
         this.priority = priority;
         this.subject = subject;
         this.completed = false;
@@ -70,10 +70,10 @@ public class Task {
     // Getters
     public String getTitle() {
         return title;
-    } 
+    }   
 
     public String getId() {
-        return taskId;
+        return id;
     }
 
     public String getDescription() {
@@ -165,7 +165,7 @@ public class Task {
         CreatedDate  :  %s
         DeadLine     :  %s
         --------------------------
-                """.formatted(title, description, taskId,
+                """.formatted(title, description, id,
                               priority, subject, completed,
                               createdDate, deadline);
     }
