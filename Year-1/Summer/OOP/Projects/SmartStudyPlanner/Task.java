@@ -44,6 +44,10 @@ public class Task {
             throw new IllegalArgumentException("Subject cannot be empty!");
         }
 
+        if (deadline == null) {
+            throw new IllegalArgumentException("deadline must not be null!");
+        }
+
         if (deadline.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Deadline cannot be in the past!");
         }
