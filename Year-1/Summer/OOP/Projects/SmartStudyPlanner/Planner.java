@@ -5,7 +5,7 @@ class Planner {
     private final List<Task> tasks = new ArrayList<>();
 
     // now planner only provides data, not to print it to console.
-    public List<Task> getTask() {
+    public List<Task> getTasks() {
         // to prevent .clear() direct access in code
         return List.copyOf(tasks);
     }
@@ -30,7 +30,7 @@ class Planner {
             return false;
         }
 
-        boolean removed = tasks.removeIf(tasks -> tasks.getId().equalsIgnoreCase(id));
+        boolean removed = tasks.removeIf(task -> task.getId().equalsIgnoreCase(id));
 
         return removed;
     }   
