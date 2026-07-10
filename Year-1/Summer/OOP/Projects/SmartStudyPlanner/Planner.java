@@ -60,7 +60,7 @@ class Planner {
             .orElse(false);
     }
 
-    public boolean updateDescription(String id, String title) {
+    public boolean updateDescription(String id, String description) {
         return findTaskById(id)
             .map(task -> {
                 task.setDescription(title);
