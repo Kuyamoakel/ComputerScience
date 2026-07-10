@@ -63,7 +63,7 @@ class Planner {
     public boolean updateDescription(String id, String description) {
         return findTaskById(id)
             .map(task -> {
-                task.setDescription(title);
+                task.setDescription(description);
                 return true;
             })
             .orElse(false);
