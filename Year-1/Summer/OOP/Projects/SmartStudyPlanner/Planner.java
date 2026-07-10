@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 class Planner {
     private final List<Task> tasks = new ArrayList<>();
@@ -35,7 +36,7 @@ class Planner {
 
     public void updateTask(String id) {
 
-        if (id == null || id.isBlank()) {
+        if (id == null ||  id.isBlank()) {
             throw new IllegalArgumentException("Id must not be null!");
         }
 
@@ -44,10 +45,14 @@ class Planner {
         }
     }
 
-    public boolean updateTitle(String id, String title) {
+    private Optional<Task> findTaskById(String id) {
         return tasks.stream()
             .filter(task -> task.getId().equalsIgnoreCase(id))
-            .findFirst()
+            .findFirst();
+    }
+
+    public boolean updateTitle(String id, String title) {
+        return findTaskById(id)
             .map(task -> {
                 task.setTitle(title);
                 return true;
@@ -56,9 +61,7 @@ class Planner {
     }
 
     public boolean updateDescription(String id, String title) {
-        return tasks.stream()
-            .filter(task -> task.getId().equalsIgnoreCase(id))
-            .findFirst()
+        return findTaskById(id)
             .map(task -> {
                 task.setDescription(title);
                 return true;
@@ -67,9 +70,7 @@ class Planner {
     }
 
     public boolean updatePriority(String id, Priority priority) {
-        return tasks.stream()
-            .filter(task -> task.getId().equalsIgnoreCase(id))
-            .findFirst()
+        return findTaskById(id)
             .map(task -> {
                 task.setPriority(priority);
                 return true;
@@ -78,9 +79,7 @@ class Planner {
     }
 
     public boolean updateSubject(String id, Subject subject) {
-        return tasks.stream()
-            .filter(task -> task.getId().equalsIgnoreCase(id))
-            .findFirst()
+        return findTaskById(id)
             .map(task -> {
                 task.setSubject(subject);
                 return true;
@@ -89,9 +88,7 @@ class Planner {
     }
 
     public boolean updateDeadLine(String id, LocalDate deadline) {
-        return tasks.stream()
-            .filter(task -> task.getId().equalsIgnoreCase(id))
-            .findFirst()
+        return findTaskById(id)
             .map(task -> {
                 task.setDeadline(deadline);
                 return true;
