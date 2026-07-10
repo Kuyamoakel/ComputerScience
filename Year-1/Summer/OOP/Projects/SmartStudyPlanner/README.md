@@ -75,6 +75,21 @@ Smart Study Planner is a Java OOP personal project that helps me to organize my 
 * 📚 There is a lot of Java modern API's, functional interfaces are not useless, less of using for loops.
 * 📚 When you don't have to change it like the `createdDate` declare it final.
 
+### DAY 5 - `07-10-2026`
+
+- ✅ Refactored the task update logic in `Planner.java`.
+- ✅ Added `findTaskById()` using `Optional<Task>` and the Stream API.
+- ✅ Reduced duplicate code by centralizing task lookup (DRY).
+- ✅ Applied the `Consumer` functional interface to simplify update operations.
+
+### Lessons Learned
+
+- 📚 Use the Stream API when it improves readability, not just because it's modern.
+- 📚 Functional interfaces solve specific problems—they are tools, not replacements for OOP.
+- 📚 Applying the DRY (Don't Repeat Yourself) principle makes code easier to maintain.
+- 📚 `Optional` helps represent "task may or may not exist" without returning `null`.
+
+
 ## Completed Features
 
 - [x] Add Task
