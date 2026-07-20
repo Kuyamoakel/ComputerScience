@@ -6,6 +6,3 @@ Encapsulation
 Inheritance
 Polymorphism
 Abstraction
-
-NEXT GOAL:
- - Making a Project made in OOP.
