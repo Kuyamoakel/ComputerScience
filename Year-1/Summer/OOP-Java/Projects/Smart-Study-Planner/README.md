@@ -89,7 +89,6 @@ Smart Study Planner is a Java OOP personal project that helps me to organize my 
 - 📚 Applying the DRY (Don't Repeat Yourself) principle makes code easier to maintain.
 - 📚 `Optional` helps represent "task may or may not exist" without returning `null`.
 
-
 ## Completed Features
 
 - [x] Add Task
