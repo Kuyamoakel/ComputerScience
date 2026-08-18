@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.List;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
@@ -7,27 +8,34 @@ public class Main {
 
         List<Instrument> instrumentList = new ArrayList<>();
         List<Chord> chordProgression = new ArrayList<>();
+        List<Song> songs = new ArrayList<>();
+        List<Musician> musicians = new ArrayList<>();
         
         Instrument piano = new Instrument("Piano", "Keyboard");
         Instrument guitar = new Instrument("Guitar", "Electric Guitar");
+        Instrument bass = new Instrument("Bass", "Electric Bass");
+        Instrument drums = new Instrument("Drums", "Electric Drums");
 
         instrumentList.add(piano);
         instrumentList.add(guitar);
 
-        Musician akel = new Musician("Akel", 20, instrumentList);
+        Musician musician = new Musician("Akel", 20, instrumentList);
 
-        // System.out.println(akel.getName() + " Plays \n" + akel.getInstrument());
+        musicians.add(musician);
 
         Chord chord = new Chord("vi - V - I - IV\nvi - V - IV");
-
         chordProgression.add(chord);
 
-        
-
-        Song song1 = new Song(null, "Jenn Johnson", MusicalKey.G_FLAT, chordProgression);
+        Song song1 = new Song("Goodness of God", "Jenn Johnson", MusicalKey.G_FLAT, chordProgression);
         Song song2 = new Song("Mangha", "His Life Worship", MusicalKey.A, chordProgression);
 
-        System.out.println(song1);
-        System.out.println(song2);
+        songs.add(song1);
+        songs.add(song2);
+
+        WorshipSet set1 = new WorshipSet("Lipa", LocalDate.of(2026, 8, 18), songs, musicians);
+
+        System.out.println(set1);
+
+
     }
 }

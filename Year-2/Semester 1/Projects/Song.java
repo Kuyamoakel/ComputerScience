@@ -30,11 +30,11 @@ public class Song {
     public Song (String title, String artist, MusicalKey key, List<Chord> chord) {
 
         if (title == null || title.isBlank()) {
-            throw new IllegalArgumentException("Title must not be empt!");
+            throw new IllegalArgumentException("Title must not be empty!");
         }
 
         if (artist == null || artist.isBlank()) {
-            throw new IllegalArgumentException("Artist must not be empt!");
+            throw new IllegalArgumentException("Artist must not be empty!");
         }
 
         if (key == null) {
@@ -72,7 +72,7 @@ public class Song {
     public void setTitle(String title) {
 
         if (title == null || title.isBlank()) {
-            throw new IllegalArgumentException("Title must not be empt!");
+            throw new IllegalArgumentException("Title must not be empty!");
         }
         this.title = title;
     }
@@ -80,7 +80,7 @@ public class Song {
     public void setArtist(String artist) {
 
         if (artist == null || artist.isBlank()) {
-            throw new IllegalArgumentException("Artist must not be empt!");
+            throw new IllegalArgumentException("Artist must not be empty!");
         }
         this.artist = artist;
     }
@@ -105,7 +105,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Songs" + "\n-----------" + "\n" +
+        return "\n-----------" + "\n" +
                "Title: " + title + "\n" +
                "Artist: " + artist +  "\n" +
                "Key: " + key + "\n" +
