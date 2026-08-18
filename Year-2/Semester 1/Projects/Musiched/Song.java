@@ -113,7 +113,7 @@ public class Song {
         sb.append("Chord Progression:\n");
 
         for (Chord chords : chord) {
-            sb.append(chords);
+            sb.append(chords + "\n");
         }
 
         return sb.toString();
