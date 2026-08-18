@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 
 enum MusicalKey {
     C("C"), C_SHARP("C#"), D_FLAT("Db"), D("D"),
@@ -48,7 +49,7 @@ public class Song {
         this.title = title;
         this.artist = artist;
         this.key = key;
-        this.chord = chord;
+        this.chord = new ArrayList<>(chord);
     }
 
     // Getters
@@ -65,7 +66,7 @@ public class Song {
     }
 
     public List<Chord> getChord() {
-        return chord;
+        return List.copyOf(chord);
     }
 
     // Setters
@@ -100,7 +101,7 @@ public class Song {
             throw new IllegalArgumentException("Chord must not be empty!");
         }
 
-        this.chord = chord;
+        this.chord = new ArrayList<>(chord);
     }
 
     @Override
