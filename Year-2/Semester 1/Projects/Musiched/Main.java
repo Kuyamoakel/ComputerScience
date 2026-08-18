@@ -39,6 +39,7 @@ public class Main {
         musicians.clear();
         instrumentList.clear();
         songs.clear();
+        chordProgression.clear();
 
         System.out.println(set1);
 
