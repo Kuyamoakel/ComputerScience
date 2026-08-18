@@ -28,7 +28,7 @@ public class WorshipSet {
 
         this.label = label;
         this.date = date;
-        this.songs = songs;
+        this.songs = new ArrayList<>(songs);
         this.musicians = new ArrayList<>(musicians);
     }
 
