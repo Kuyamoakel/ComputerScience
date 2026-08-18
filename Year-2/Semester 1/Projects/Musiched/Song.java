@@ -10,7 +10,7 @@ enum MusicalKey {
 
     private final String label;
 
-    // Setter
+    // constructor
     MusicalKey(String label) {
         this.label = label;   
     }
