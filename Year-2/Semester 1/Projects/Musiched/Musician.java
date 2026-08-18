@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 
 class Musician {
     private String name;
@@ -21,7 +22,7 @@ class Musician {
 
         this.name = name;
         this.age = age;
-        this.instrument = instrument;
+        this.instrument = new ArrayList<>(instrument);
     }
 
     // Getters
@@ -34,7 +35,7 @@ class Musician {
     }
 
     public List<Instrument> getInstrument() {
-        return instrument;
+        return List.copyOf(instrument);
     }
 
     // Setters
@@ -62,7 +63,7 @@ class Musician {
             throw new IllegalArgumentException("Instrument cannot be null!");
         }
 
-        this.instrument = instrument;
+        this.instrument = new ArrayList<>(instrument);
     }
 
     @Override
