@@ -105,11 +105,18 @@ public class Song {
 
     @Override
     public String toString() {
-        return "\n-----------" + "\n" +
-               "Title: " + title + "\n" +
-               "Artist: " + artist +  "\n" +
-               "Key: " + key + "\n" +
-               "Chords: \n" + chord;
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(title + " - " + artist + "\n");
+        sb.append("Key: " + key + "\n");
+        sb.append("Chord Progression:\n");
+
+        for (Chord chords : chord) {
+            sb.append(chords);
+        }
+
+        return sb.toString();
     }
 
 }

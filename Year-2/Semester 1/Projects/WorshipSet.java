@@ -124,13 +124,26 @@ public class WorshipSet {
         this.musicians = musicians;
     }
 
+
     @Override
     public String toString() {
-        return "\nSET-LIST" + "\n---------------" + 
-               "\nLabel: " + label +
-               "\nDate: " + date +
-               "\nSong: " + songs +
-               "\n---------------" +
-               "\nMusicians\n" + musicians; 
+        
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Label: " + label);
+        sb.append("\nDate: " + date);
+        sb.append("\nSongs:\n");
+
+        for (int i = 0; i < songs.size(); i++) {
+            sb.append((i+1) + ". ").append(songs.get(i)).append("\n\n");
+        }
+
+        sb.append("Musicians: ");
+
+        for (Musician musician : musicians) {
+            sb.append(musician + "\n");
+        }
+
+        return sb.toString();
     }
 }

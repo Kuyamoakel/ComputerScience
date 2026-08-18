@@ -45,7 +45,6 @@ public class Instrument {
 
     @Override
     public String toString() {
-        return "Instrument: " + name +
-               "\nType: " + type;
+        return "\n - " + type;
     }
 }

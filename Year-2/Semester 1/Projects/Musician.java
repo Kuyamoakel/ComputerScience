@@ -67,9 +67,15 @@ class Musician {
 
     @Override
     public String toString() {
-        return "Musician" + "\n-----------" + "\n" +
-               "Name: " + name +
-               "\nAge: " + age +
-               "\nInstrument: " + instrument;
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\nName: " + name + "\nAge: " + age + "\nInstruments: ");
+
+        for (Instrument instruments : instrument) {
+            sb.append(instruments);
+        }
+
+        return sb.toString();
     }
 }

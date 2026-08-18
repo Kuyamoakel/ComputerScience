@@ -19,9 +19,11 @@ public class Main {
         instrumentList.add(piano);
         instrumentList.add(guitar);
 
-        Musician musician = new Musician("Akel", 20, instrumentList);
+        Musician musician1 = new Musician("Akel", 20, instrumentList);
+        Musician musician2 = new Musician("Arsy", 19, instrumentList);
 
-        musicians.add(musician);
+        musicians.add(musician1);
+        musicians.add(musician2);
 
         Chord chord = new Chord("vi - V - I - IV\nvi - V - IV");
         chordProgression.add(chord);
