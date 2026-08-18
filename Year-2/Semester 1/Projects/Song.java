@@ -109,7 +109,7 @@ public class Song {
                "Title: " + title + "\n" +
                "Artist: " + artist +  "\n" +
                "Key: " + key + "\n" +
-               "Chords: " + chord;
+               "Chords: \n" + chord;
     }
 
 }

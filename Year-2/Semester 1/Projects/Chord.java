@@ -27,6 +27,6 @@ public class Chord {
 
     @Override
     public String toString() {
-        return "Chords: " + nashville;
+        return nashville;
     }
 }
