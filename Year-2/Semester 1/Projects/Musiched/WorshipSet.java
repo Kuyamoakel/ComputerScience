@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class WorshipSet {
@@ -28,7 +29,7 @@ public class WorshipSet {
         this.label = label;
         this.date = date;
         this.songs = songs;
-        this.musicians = musicians;
+        this.musicians = new ArrayList<>(musicians);
     }
 
     public void addMusician(Musician musician) {
@@ -112,7 +113,7 @@ public class WorshipSet {
             throw new IllegalArgumentException("Song must have 1 atleast!");
         }
 
-        this.songs = songs;
+        this.songs = new ArrayList<>(songs);
     }
 
     public void setMusicians(List<Musician> musicians) {
@@ -121,7 +122,7 @@ public class WorshipSet {
             throw new IllegalArgumentException("Musician must not be null!");
         }
 
-        this.musicians = musicians;
+        this.musicians = new ArrayList<>(musicians);
     }
 
 

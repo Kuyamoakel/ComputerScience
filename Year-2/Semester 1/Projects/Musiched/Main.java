@@ -36,6 +36,8 @@ public class Main {
 
         WorshipSet set1 = new WorshipSet("Lipa", LocalDate.of(2026, 8, 18), songs, musicians);
 
+        musicians.clear();
+
         System.out.println(set1);
 
 
