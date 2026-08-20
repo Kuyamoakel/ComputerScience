@@ -6,46 +6,44 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        List<Instrument> instrumentList = new ArrayList<>();
-        List<Chord> chordProgression = new ArrayList<>();
+        List<Instrument> instrumentList1 = new ArrayList<>();
+        List<Instrument> instrumentList2 = new ArrayList<>();
+        List<Chord> GoodnessChords = new ArrayList<>();
+        List<Chord> ManghaChords = new ArrayList<>();
         List<Song> songs = new ArrayList<>();
         List<Musician> musicians = new ArrayList<>();
-        
-        Instrument piano = new Instrument("Piano", "Keyboard");
-        Instrument guitar = new Instrument("Guitar", "Electric Guitar");
-        Instrument bass = new Instrument("Bass", "Electric Bass");
-        Instrument drums = new Instrument("Drums", "Electric Drums");
 
-        instrumentList.add(piano);
-        instrumentList.add(guitar);
+        instrumentList1.add(new Instrument("Piano", "Keyboard"));
+        instrumentList1.add(new Instrument("Guitar", "Electric Guitar"));
 
-        Musician musician1 = new Musician("Akel", 20, List.of(
-            new Instrument("Piano", "Keyboard"),
-            new Instrument("Guitar", "Electric Guitar")
-        ));
+        instrumentList2.add(new Instrument("Bass", "Eletric Bass Guitar"));
+        instrumentList2.add(new Instrument("Piano", "Keyboard"));
+
+        Musician musician1 = new Musician("Akel", 20, instrumentList1);
         
-        Musician musician2 = new Musician("Shei", 34, List.of(
-            new Instrument("Bass", "Eletric Bass Guitar"),
-            new Instrument("Piano", "Keyboard")
-        ));
+        Musician musician2 = new Musician("Shei", 34, instrumentList2);
 
         musicians.add(musician1);
         musicians.add(musician2);
 
-        Chord chord = new Chord("vi - V - I - IV\nvi - V - IV");
-        chordProgression.add(chord);
+        Chord GoodnessStanza = new Chord("Stanza: \nI - IV - I - V/VII\nvi - IV - V");
+        Chord GoodnessChorus = new Chord("vi - IV - I - V/VII\nvi - IV - V - I");
 
-        Song song1 = new Song("Goodness of God", "Jenn Johnson", MusicalKey.G_FLAT, List.of(
-            new Chord("Stanza: \nI - IV - I - V/VII\nvi - IV - V"),
-            new Chord("vi - IV - I - V/VII\nvi - IV - V - I")
+        Chord ManghaIntro = new Chord("Intro: \nvi - V - I - IV \nvi - V - IV");
+        Chord ManghaStanza = new Chord("\nStanza: \nI - vi - IV (2x)");
+        Chord ManghaPre = new Chord(
+            "\nPre-Cho: \nvi - V - I - IV \nii - I/III - IV" + 
+            "vi - V - I - IV \\nii - I/III - V"
+        );
 
-        ));
-        Song song2 = new Song("Mangha", "His Life Worship", MusicalKey.A, List.of(
-            new Chord("Intro: \nvi - V - I - IV \nvi - V - IV"),
-            new Chord("\nStanza: \nI - vi - IV (2x)"),
-            new Chord("\nPre-Cho: \nvi - V - I - IV \nii - I/III - IV"),
-            new Chord("vi - V - I - IV \nii - I/III - V")
-        ));
+        GoodnessChords.add(GoodnessStanza);
+        GoodnessChords.add(GoodnessChorus);
+        ManghaChords.add(ManghaIntro);
+        ManghaChords.add(ManghaStanza);
+        ManghaChords.add(ManghaPre);
+
+        Song song1 = new Song("Goodness of God", "Jenn Johnson", MusicalKey.G_FLAT, GoodnessChords);
+        Song song2 = new Song("Mangha", "His Life Worship", MusicalKey.A, ManghaChords);
 
         songs.add(song1);
         songs.add(song2);
@@ -53,9 +51,9 @@ public class Main {
         WorshipSet set1 = new WorshipSet("Paranique", LocalDate.of(2026, 8, 21), songs, musicians);
 
         musicians.clear();
-        instrumentList.clear();
+        GoodnessChords.clear();
+        ManghaChords.clear();
         songs.clear();
-        chordProgression.clear();
 
         System.out.println(set1);
 
