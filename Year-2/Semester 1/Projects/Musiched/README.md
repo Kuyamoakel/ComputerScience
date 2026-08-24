@@ -36,7 +36,7 @@ Started from five empty class files and ended with a working object model for tr
 I proved this and myself by writing a Main that builds a WorshipSet, then calls `x.clear()` and nothing happens.
 ## What's next
 - `equals()`/`hashCode()` on `Song`/`Musician`/`Chord`
-- A small `Scanner-based` CLI in `Main` so set-lists can be built interactively instead of hardcoded.
+- A small `Scanner-based` CLI in `Main` so set-lists can be built interactively instead of hardcoded. `To use it`
 - `File Handling`
 - `Inheritance/interface` possible
 
