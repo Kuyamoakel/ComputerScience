@@ -6,17 +6,26 @@ public class SetLibrary {
     private List<WorshipSet> sets;
 
     public SetLibrary(String label, List<WorshipSet> sets) {
-        
+
         if (label == null || label.isBlank()) {
             throw new IllegalArgumentException("Label cannot be empty!");
         }
-        
+
         if (sets == null) {
             throw new IllegalArgumentException("sets must not be null!");
         }
-        
+
         this.label = label;
         this.sets = new ArrayList<>(sets); // defesive copying
+    }
+
+    public void addSet(WorshipSet set) {
+
+        if (sets == null) {
+            throw new IllegalArgumentException("sets must not be null!");
+        }
+
+        sets.add(set);
     }
 
     public String getLabel() {
@@ -47,13 +56,13 @@ public class SetLibrary {
 
     @Override
     public String toString() {
-        
+
         StringBuilder sb = new StringBuilder();
 
         sb.append("Label: " + label);
 
         for (int i = 0; i < sets.size(); i++) {
-            sb.append((i+1) + ". ").append(sets.get(i) + "\n\n");
+            sb.append((i + 1) + ". ").append(sets.get(i) + "\n\n");
         }
 
         return sb.toString();
