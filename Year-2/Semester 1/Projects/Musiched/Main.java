@@ -1,72 +1,88 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Instrument> instrumentList1 = new ArrayList<>();
-        List<Instrument> instrumentList2 = new ArrayList<>();
-        List<Chord> GoodnessChords = new ArrayList<>();
-        List<Chord> ManghaChords = new ArrayList<>();
+        Scanner input = new Scanner(System.in);
+
+        // Lists
         List<Song> songs = new ArrayList<>();
-        List<Musician> musicians = new ArrayList<>();
-        List<WorshipSet> setLibrays = new ArrayList<>();
 
-        instrumentList1.add(new Instrument("Piano", "Keyboard"));
-        instrumentList1.add(new Instrument("Guitar", "Electric Guitar"));
+        // Array
+        MusicalKey[] keys = MusicalKey.values();
 
-        instrumentList2.add(new Instrument("Bass", "Eletric Bass Guitar"));
-        instrumentList2.add(new Instrument("Piano", "Keyboard"));
+        while (true) {
+            try {
 
-        Musician musician1 = new Musician("Akel", 20, instrumentList1);
-        
-        Musician musician2 = new Musician("Shei", 34, instrumentList2);
+                System.out.print(
+                    "----- Worship Library ----\n" +
+                    "1. Add song\n" +
+                    "2. Add musician\n" +
+                    "3. Build a worship set\n" +
+                    "4. View Library\n" +
+                    "5. Exit\n" +
+                    "Choice: "
+                );
+                int menu = input.nextInt();
+                input.nextLine();
 
-        musicians.add(musician1);
-        musicians.add(musician2);
+                switch (menu) {
+                    case 1:
+                        List<Chord> chords = new ArrayList<>();
+                        System.out.println("--- Adding Songs ---");
 
-        Chord GoodnessStanza = new Chord("Stanza: \nI - IV - I - V/VII\nvi - IV - V");
-        Chord GoodnessChorus = new Chord("vi - IV - I - V/VII\nvi - IV - V - I");
+                        System.out.print("Enter Title: ");
+                        String title = input.nextLine();
 
-        Chord ManghaIntro = new Chord("Intro: \nvi - V - I - IV \nvi - V - IV");
-        Chord ManghaStanza = new Chord("\nStanza: \nI - vi - IV (2x)");
-        Chord ManghaPre = new Chord(
-            "\nPre-Cho: \nvi - V - I - IV \nii - I/III - IV" + 
-            "vi - V - I - IV \\nii - I/III - V"
-        );
+                        System.out.print("Enter Artist: ");
+                        String artist = input.nextLine();
 
-        GoodnessChords.add(GoodnessStanza);
-        GoodnessChords.add(GoodnessChorus);
-        ManghaChords.add(ManghaIntro);
-        ManghaChords.add(ManghaStanza);
-        ManghaChords.add(ManghaPre);
+                        System.out.println("Select Key: ");
+                        for(int i = 0; i < keys.length; i++) {
+                            System.out.println((i+1) + ". " + keys[i]);
+                        }
 
-        Song song1 = new Song("Goodness of God", "Jenn Johnson", MusicalKey.G_FLAT, GoodnessChords);
-        Song song2 = new Song("Mangha", "His Life Worship", MusicalKey.A, ManghaChords);
+                        System.out.print("Choice: ");
+                        int keyChoice = input.nextInt();
+                        input.nextLine();
 
-        songs.add(song1);
-        songs.add(song2);
+                        MusicalKey selectedKey = keys[keyChoice - 1];
 
-        WorshipSet set1 = new WorshipSet("Paranique", LocalDate.of(2026, 8, 26), songs, musicians);
-        WorshipSet set2 = new WorshipSet("Paranique", LocalDate.of(2026, 8, 26), songs, musicians);
+                        System.out.println("Add Chords and Label to it (Stanza, Pre, Chorus):");
+                        boolean decision;
+                        do {
+                            System.out.print("Enter chord: ");
+                            String chord = input.nextLine();
 
-        musicians.clear();
-        GoodnessChords.clear();
-        ManghaChords.clear();
-        songs.clear();
+                            Chord songChord = new Chord(chord);
+                            chords.add(songChord);
 
-        setLibrays.add(set1);
-        setLibrays.add(set2);
-    
-        SetLibrary setnum1 = new SetLibrary("October Praise", setLibrays);
-        SetLibrary setnum2 = new SetLibrary("October Praise", setLibrays);
+                            System.out.print("Do you want to continue? (Y / N): ");
+                            String continuing = input.nextLine().toLowerCase();
+                            
+                            decision = (continuing.equals("y"));
+                            
+                        } while (decision);
 
-        setLibrays.clear();
+                        Song newSong = new Song(title, artist, selectedKey, chords);
+                        songs.add(newSong);
+                        System.out.println("Song Added\n");
+                        break;
+                    case 5:
+                        System.out.println("Exiting Program...");
+                        return;
+                    default:
+                        System.out.println("Invalid choice. Try Again.\n");
+                        break;
+                }
 
-        System.out.println(setnum1);
-        System.out.println(setnum2);
-
+            } catch (InputMismatchException | ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
+                System.out.println("Invalid Input. Please try again! (Press enter)");
+                input.nextLine();
+            }
+        }
     }
 }
