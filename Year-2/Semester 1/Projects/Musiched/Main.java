@@ -12,6 +12,7 @@ public class Main {
         List<Chord> ManghaChords = new ArrayList<>();
         List<Song> songs = new ArrayList<>();
         List<Musician> musicians = new ArrayList<>();
+        List<WorshipSet> setLibrays = new ArrayList<>();
 
         instrumentList1.add(new Instrument("Piano", "Keyboard"));
         instrumentList1.add(new Instrument("Guitar", "Electric Guitar"));
@@ -48,15 +49,24 @@ public class Main {
         songs.add(song1);
         songs.add(song2);
 
-        WorshipSet set1 = new WorshipSet("Paranique", LocalDate.of(2026, 8, 21), songs, musicians);
+        WorshipSet set1 = new WorshipSet("Paranique", LocalDate.of(2026, 8, 26), songs, musicians);
+        WorshipSet set2 = new WorshipSet("Paranique", LocalDate.of(2026, 8, 26), songs, musicians);
 
         musicians.clear();
         GoodnessChords.clear();
         ManghaChords.clear();
         songs.clear();
 
-        System.out.println(set1);
+        setLibrays.add(set1);
+        setLibrays.add(set2);
+    
+        SetLibrary setnum1 = new SetLibrary("October Praise", setLibrays);
+        SetLibrary setnum2 = new SetLibrary("October Praise", setLibrays);
 
+        setLibrays.clear();
+
+        System.out.println(setnum1);
+        System.out.println(setnum2);
 
     }
 }

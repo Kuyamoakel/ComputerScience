@@ -59,10 +59,10 @@ public class SetLibrary {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Label: " + label);
+        sb.append("========== " + label + " ==========\n");
 
         for (int i = 0; i < sets.size(); i++) {
-            sb.append((i + 1) + ". ").append(sets.get(i) + "\n\n");
+            sb.append(sets.get(i) + "\n\n");
         }
 
         return sb.toString();
