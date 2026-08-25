@@ -21,7 +21,7 @@ public class SetLibrary {
 
     public void addSet(WorshipSet set) {
 
-        if (sets == null) {
+        if (set == null) {
             throw new IllegalArgumentException("sets must not be null!");
         }
 
