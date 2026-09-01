@@ -40,21 +40,25 @@ I proved this and myself by writing a Main that builds a WorshipSet, then calls 
 - `File Handling`
 - `Inheritance/interface` possible
 
-# Devlog — Day 2 `forgot`
-## What i built today
-Started the small `Scanner-based` CLI in `Main` to eliminate the hardcoded `To use it`. Already finish the `Case 1` and on the `Day 3` the `Case 2` is next.
+## Day 2 — `forgot`
+### What I built
+Started a small `Scanner`-based CLI in `Main` to eliminate the hardcoded values used in `To use it`. Finished `Case 1`.
 
-# Devlog — Day 3 `9/1/2026`
-## What i built today
-Started the `case 2` CLI in `Main` same pattern with the `case 1`. It's functional but needed more refactoring in the future.
+### What's next
+- Day 3: implement `Case 2`.
 
-## What's next
-- Finish `case 3` - `Build a worship set`.
-- `case 4` - `View Library`
+---
+
+## Day 3 — 9/1/2026
+### What I built
+Implemented `Case 2` in `Main`, following the same pattern as `Case 1`. It's functional but will need further refactoring.
+
+### What's next
+- Finish `Case 3` — *Build a worship set*
+- Finish `Case 4` — *View Library*
 - Wire `SetLibrary` into `Main`
-- Duplicate prevention when slecting songs/musicians in `case 3`
-- `Basic file persistence`
-
+- Add duplicate prevention when selecting songs/musicians in `Case 3`
+- Add basic file persistence
 
 
 
