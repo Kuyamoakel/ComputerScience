@@ -44,6 +44,17 @@ I proved this and myself by writing a Main that builds a WorshipSet, then calls 
 ## What i built today
 Started the small `Scanner-based` CLI in `Main` to eliminate the hardcoded `To use it`. Already finish the `Case 1` and on the `Day 3` the `Case 2` is next.
 
+# Devlog — Day 3 `9/1/2026`
+## What i built today
+Started the `case 2` CLI in `Main` same pattern with the `case 1`. It's functional but needed more refactoring in the future.
+
+## What's next
+- Finish `case 3` - `Build a worship set`.
+- `case 4` - `View Library`
+- Wire `SetLibrary` into `Main`
+- Duplicate prevention when slecting songs/musicians in `case 3`
+- `Basic file persistence`
+
 
 
 
