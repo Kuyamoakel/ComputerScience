@@ -40,4 +40,10 @@ I proved this and myself by writing a Main that builds a WorshipSet, then calls 
 - `File Handling`
 - `Inheritance/interface` possible
 
+# Devlog — Day 2 `forgot`
+## What i built today
+Started the small `Scanner-based` CLI in `Main` to eliminate the hardcoded `To use it`. Already finish the `Case 1` and on the `Day 3` the `Case 2` is next.
+
+
+
 
