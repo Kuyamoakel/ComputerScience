@@ -7,17 +7,43 @@ public class Main {
         Scanner input = new Scanner(System.in);
         
         ArrayList<Employee> employees = new ArrayList<>();
+        ArrayList<Department> departments = new ArrayList<>();
+        ArrayList<Position> positions = new ArrayList<>();
         ArrayList<Task> tasks = new ArrayList<>();
 
-        tasks.add(new Task("T001", "Debugging", "Need to center a div", "Senior Eng."));
-        tasks.add(new Task("T002", "New PC", "Needed new set of computers", "Head Budget"));
-        tasks.add(new Task("T003", "Hiring", "Hire new emplooyes for the IT department", "Second Hr"));
+        // Departments Objects
+        Department it = new Department("DOO1", "Information Technology");
+        Department accounting = new Department("DOO2", "Accounting");
+        Department hr = new Department("DOO3", "Human Resources");
+        
+        departments.add(it);
+        departments.add(accounting);
+        departments.add(hr);
+        
+        // Positions Objects
+        Position seniorDev = new Position("Senior Developer", it);
+        Position hrOff = new Position("Human Resource Officer", hr);
+        Position accStaff = new Position("Accounting Staff", accounting);
+        Position hrStaff = new Position("Human Resource Staff", hr);
+        Position itSupport = new Position("IT Support", it);
 
-        employees.add(new Employee("E001", "Akel", "IT", "Senior Eng.", null));
-        employees.add(new Employee("E002", "Justine", "IT", "Senior Eng.", null));
-        employees.add(new Employee("E003", "Matthew", "Marketing", "Head budget", null));
-        employees.add(new Employee("E004", "Onix", "HR", "Head Hr", null));
-        employees.add(new Employee("E005", "Shion", "HR", "Second Hr", null));
+        positions.add(seniorDev);
+        positions.add(hrOff);
+        positions.add(accStaff);
+        positions.add(hrStaff);
+        positions.add(itSupport);
+        
+        // Task Objects
+        tasks.add(new Task("T001", "Debugging", "Need to center a div", it));
+        tasks.add(new Task("T002", "Budgeting", "Company Team Building budgeting", it));
+        tasks.add(new Task("T003", "Hiring", "Hire new emplooyes for the IT department", hr));
+
+        // Employees Objects
+        employees.add(new Employee("E001", "Akel", it, seniorDev));
+        employees.add(new Employee("E002", "Justine", it, itSupport));
+        employees.add(new Employee("E003", "Matthew", accounting, accStaff));
+        employees.add(new Employee("E004", "Onix", hr, hrOff));
+        employees.add(new Employee("E005", "Shion", hr, hrStaff));
 
         while (true) {
             System.out.print("""
@@ -25,8 +51,9 @@ public class Main {
                     1. Check Tasks
                     2. Check Employees
                     3. Add Task to Employees
-                    4. Create Task
-                    5. Exit
+                    4. Find Employee
+                    5. Create Task
+                    6. Exit
                     Choice:""");
             int dashBoard = input.nextInt();
             input.nextLine();
@@ -35,13 +62,13 @@ public class Main {
                 case 1:
                     System.out.println("===== CURRENT EXISTING TAKS =====");
                     for (Task task : tasks) {
-                        System.out.println(task);
+                        task.printTask();
                     }
                     break;
                 case 2:
                     System.out.println("===== CHECK EMPLOYEES =====");
                     for (Employee employee : employees) {
-                        System.out.println(employee);
+                        employee.printEmployees();
                     }
                     break;
                 case 3:
@@ -79,13 +106,38 @@ public class Main {
                     }
 
                     if (taskHolder == null) {
-                        System.out.println("Cannt find Task Id");
+                        System.out.println("Cannot find Task Id");
+                        break;
+                    }
+
+                    if (employeeHolder.getDepartment() != taskHolder.getDepartment()) {
+                        System.out.println("Task Assignment Failed!");
+                        employeeHolder.getPosition().printPositionInfo();
                         break;
                     }
 
                     employeeHolder.assignTask(taskHolder);
                     break;
                 case 4:
+                    Employee findingEmployee = null;
+                    System.out.println("===== FIND EMPLOYEE ======");
+                    System.out.print("Find Employee ID: ");
+                    String employeeID = input.nextLine();
+
+                    for (Employee employee : employees) {
+                        if (employeeID.equals(employee.getEmployeeId())) {
+                            findingEmployee = employee;
+                        }
+                    }
+
+                    if (findingEmployee == null) {
+                        System.out.println("Employee Did not Found!");
+                        break;
+                    }
+
+                    findingEmployee.printEmployees();
+                    break;
+                case 5:
                     System.out.println("===== CREATE TASK ====");
                     System.out.print("Enter Task ID (T00 Format): ");
                     String newTaskID = input.nextLine();
@@ -99,7 +151,8 @@ public class Main {
                     }
 
                     if (isFound) {
-                        System.out.println("ERROR: it is used Task ID: " + newTaskID);
+                        System.out.println("Task ID already exists!");
+                        System.out.println("Task creation will be cancelled. . .");
                         break;
                     }
  
@@ -109,17 +162,33 @@ public class Main {
                     System.out.print("Enter Task Description: ");
                     String newTaskDescription = input.nextLine();
 
-                    System.out.print("Enter Specialization Requirement: ");
-                    String newSpecialization = input.nextLine();
+                    System.out.print("Enter Department Requirement: ");
+                    String newDepartment = input.nextLine();
 
-                    tasks.add(new Task(newTaskID, newTaskName, newTaskDescription, newSpecialization));
-                    System.out.println("Sucessfully Added!");
-                    System.out.println("Task ID: " + newTaskID);
-                    System.out.println("Task Name: " + newTaskName);
-                    System.out.println("Task Description: " + newTaskDescription);
-                    System.out.println("Task Specialization: " + newSpecialization);
+
+                    Department departmentCreation = null;
+
+                    for (Department department : departments) {
+                        if (department.getDepartmentName().equals(newDepartment)) {
+                            departmentCreation = department;
+                        }
+                    }
+
+                    if (departmentCreation != null) {
+                        Task taskCreation = new Task(newTaskID, newTaskName, newTaskDescription, departmentCreation);
+                        tasks.add(taskCreation);
+                        System.out.println("Successfully Added the Task!");
+                        System.out.println("===== NEW TASK =====");
+                        taskCreation.printTask();
+                    } else {
+                        System.out.println("Department " + newDepartment +" is currently not avaiable.");
+                    }
                     break;
+                case 6:
+                    System.out.println("THANK YOU!");
+                    return;
                 default:
+                    System.out.println("Invalid Input!");
                     break;
             }
 

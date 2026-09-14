@@ -1,16 +1,16 @@
 public class Employee {
     private String employeeId;
     private String employeeName;
-    private String department;
-    private String position;
+    private Department department;
+    private Position position;
     private Task assignedTask; 
 
-    public Employee(String employeeId, String employeeName, String department, String position, Task assignedTask) {
+    public Employee(String employeeId, String employeeName, Department department, Position position) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.department = department;
         this.position = position;
-        this.assignedTask = assignedTask;
+        this.assignedTask = null;
     }
 
     // getters
@@ -24,38 +24,52 @@ public class Employee {
 
     public void assignTask(Task task) {
 
+        if (department.getDepartmentName() != task.getDepartment().getDepartmentName()) {
+            System.out.println("Task Assignment Failed!");
+            position.printPositionInfo();
+            return;
+        }
+
         if (this.assignedTask != null) {
             System.out.println("ERROR: Already have Task");
             return;
         }
 
         this.assignedTask = task;
-        System.out.println("Succesfully Assigned Task!.");
+        System.out.println("The Task " + task.getTaskName() + " is succesfully assigned to " + employeeName);
     }
 
-    @Override 
-    public String toString() {
+    public Task getAssignedTask() {
+        return assignedTask;
+    }
 
-        if (assignedTask == null) {
-            return "\n===== Employee Infromation =====" +
-               "\nEmployee ID: " + employeeId +
-               "\nEmployee Name: " + employeeName +
-               "\nDepartment: " + department +
-               "\nPosition: " + position +
-               "\n===== CURRENT TASK =====" +
-               "\nCurrently no Task" +
-               "\n========================";
+    public Department getDepartment() {
+        return department;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void printEmployees() {
+        if (this.assignedTask == null) {
+            System.out.println("===== Employee Information =====");
+            System.out.println("Employee ID: " + employeeId);
+            System.out.println("Employee Name: " + employeeName);
+            System.out.println("Department: " + department.getDepartmentName());
+            System.out.println("Position: " + position.getPositionName());
+            System.out.println("====== CURRENT TASK =====");
+            System.out.println("Currently No Task");
+            System.out.println("=========================");
         } else {
-            return "\n===== Employee Infromation =====" +
-               "\nEmployee ID: " + employeeId +
-               "\nEmployee Name: " + employeeName +
-               "\nDepartment: " + department +
-               "\nPosition: " + position +
-               "\n===== CURRENT TASK =====" +
-               assignedTask.toString() + 
-               "\n========================";
+            System.out.println("===== Employee Information =====");
+            System.out.println("Employee ID: " + employeeId);
+            System.out.println("Employee Name: " + employeeName);
+            System.out.println("Department: " + department.getDepartmentName());
+            System.out.println("Position: " + position.getPositionName());
+            System.out.println("====== CURRENT TASK =====");
+            assignedTask.printTask();
         }
+        
     }
-
-
 }
