@@ -13,6 +13,7 @@ public class Project extends Task {
 
     @Override 
     public void printTask() {
+        System.out.println("\n============================");
         System.out.println("ProjectName: " + projectName);
         super.printTask();
     }

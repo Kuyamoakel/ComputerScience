@@ -5,20 +5,18 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        
-        ArrayList<Employee> employees = new ArrayList<>();
-        ArrayList<Department> departments = new ArrayList<>();
+
+        Company company = new Company();
         ArrayList<Position> positions = new ArrayList<>();
-        ArrayList<Task> tasks = new ArrayList<>();
 
         // Departments Objects
         Department it = new Department("DOO1", "Information Technology");
         Department accounting = new Department("DOO2", "Accounting");
         Department hr = new Department("DOO3", "Human Resources");
         
-        departments.add(it);
-        departments.add(accounting);
-        departments.add(hr);
+        company.addDepartment(it);
+        company.addDepartment(accounting);
+        company.addDepartment(hr);
         
         // Positions Objects
         Position seniorDev = new Position("Senior Developer", it);
@@ -34,16 +32,17 @@ public class Main {
         positions.add(itSupport);
         
         // Task Objects
-        tasks.add(new Task("T001", "Debugging", "Need to center a div", it));
-        tasks.add(new Task("T002", "Budgeting", "Company Team Building budgeting", it));
-        tasks.add(new Task("T003", "Hiring", "Hire new emplooyes for the IT department", hr));
+
+        company.addTask(new RegularTask("T001", "Debugging", "Need to center a div", it));
+        company.addTask(new RegularTask("T002", "Budgeting", "Company Team Building budgeting", it));
+        company.addTask(new RegularTask("T003", "Hiring", "Hire new emplooyes for the IT department", hr));
 
         // Employees Objects
-        employees.add(new Employee("E001", "Akel", it, seniorDev));
-        employees.add(new Employee("E002", "Justine", it, itSupport));
-        employees.add(new Employee("E003", "Matthew", accounting, accStaff));
-        employees.add(new Employee("E004", "Onix", hr, hrOff));
-        employees.add(new Employee("E005", "Shion", hr, hrStaff));
+        company.addEmployee(new Employee("E001", "Akel", it, seniorDev));
+        company.addEmployee(new Employee("E002", "Justine", it, itSupport));
+        company.addEmployee(new Employee("E003", "Matthew", accounting, accStaff));
+        company.addEmployee(new Employee("E004", "Onix", hr, hrOff));
+        company.addEmployee(new Employee("E005", "Shion", hr, hrStaff));
 
         while (true) {
             System.out.print("""
@@ -61,30 +60,80 @@ public class Main {
             switch (dashBoard) {
                 case 1:
                     System.out.println("===== CURRENT EXISTING TAKS =====");
-                    for (Task task : tasks) {
-                        task.printTask();
+                    System.out.println("1. Regular Task");
+                    System.out.println("2. Urgent Task");
+                    System.out.println("3. Project Task");
+                    System.out.println("4. ALL TASK");
+                    System.out.print("Choice: ");
+                    int checkTaskChoices = input.nextInt();
+                    input.nextLine();
+
+                    switch (checkTaskChoices) {
+                        case 1:
+                            boolean foundRegular = false;
+                            for (Task t : company.getTasks()) {
+                                if (t instanceof RegularTask) {
+                                    RegularTask regular = (RegularTask) t;
+                                    regular.printTask();
+                                    foundRegular = true;
+                                }
+                            }
+                            if (!foundRegular) {
+                                    System.out.println("=======================");
+                                    System.out.println("Currently No Task!");
+                                }
+                            break;
+                        case 2:
+                            boolean foundUrgent = false;
+                            for (Task t : company.getTasks()) {
+                                if (t instanceof UrgentTask) {
+                                    UrgentTask urgentTask = (UrgentTask) t;
+                                    urgentTask.printTask();
+                                    foundUrgent = true;
+                                }
+                            }
+                            if (!foundUrgent) {
+                                    System.out.println("=======================");
+                                    System.out.println("Currently No Task!");
+                                }
+                            break;
+                        case 3:
+                            boolean foundProject = false;
+                            for (Task t : company.getTasks()) {
+                                if (t instanceof Project) {
+                                    if (t instanceof Project) {
+                                        Project project = (Project) t;
+                                        project.printTask();
+                                        foundProject = true;
+                                    } 
+                                }
+                            }
+                            if (!foundProject) {
+                                    System.out.println("=======================");
+                                    System.out.println("Currently No Task!");
+                                }
+                            break;
+                        case 4:
+                            company.checkTasks();
+                            break;
+                        default:
+                            System.out.println("Invalid Input!");
+                            break;
                     }
                     break;
                 case 2:
                     System.out.println("===== CHECK EMPLOYEES =====");
-                    for (Employee employee : employees) {
+                    for (Employee employee : company.getEmployees()) {
                         employee.printEmployees();
                     }
                     break;
                 case 3:
                     System.out.println("===== ADD TASK TO EMPLOYEE =====");
-            
-                    Employee employeeHolder = null;
-                    Task taskHolder = null;
-
+                    
                     System.out.print("Find Emplyoee: ");
                     String findEmployee = input.nextLine();
                     
-                    for (Employee employee : employees) {
-                        if (employee.getEmployeeId().equals(findEmployee)) {
-                            employeeHolder = employee;
-                        }
-                    }
+                    Employee employeeHolder = company.findEmployee(findEmployee);
 
                     if (employeeHolder == null) {
                         System.out.println("Cannot find Employee");
@@ -99,58 +148,37 @@ public class Main {
                     System.out.print("Enter Task ID: ");
                     String taskID = input.nextLine();
 
-                    for (Task task : tasks) {
-                        if (task.getTaskId().equals(taskID)) {
-                            taskHolder = task;
-                        }
-                    }
+                    Task taskHolder = company.findTask(taskID);
 
                     if (taskHolder == null) {
                         System.out.println("Cannot find Task Id");
                         break;
                     }
 
-                    if (employeeHolder.getDepartment() != taskHolder.getDepartment()) {
-                        System.out.println("Task Assignment Failed!");
-                        employeeHolder.getPosition().printPositionInfo();
-                        break;
-                    }
-
                     employeeHolder.assignTask(taskHolder);
                     break;
                 case 4:
-                    Employee findingEmployee = null;
-                    System.out.println("===== FIND EMPLOYEE ======");
-                    System.out.print("Find Employee ID: ");
-                    String employeeID = input.nextLine();
+                        System.out.println("===== FIND EMPLOYEE ======");
+                        System.out.print("Find Employee ID: ");
+                        String employeeID = input.nextLine();
+                        
+                        Employee findingEmployee = company.findEmployee(employeeID);;
 
-                    for (Employee employee : employees) {
-                        if (employeeID.equals(employee.getEmployeeId())) {
-                            findingEmployee = employee;
+                        if (findingEmployee == null) {
+                            System.out.println("Employee Did not Found!");
+                            break;
                         }
-                    }
 
-                    if (findingEmployee == null) {
-                        System.out.println("Employee Did not Found!");
+                        findingEmployee.printEmployees();
                         break;
-                    }
-
-                    findingEmployee.printEmployees();
-                    break;
                 case 5:
-                    System.out.println("===== CREATE TASK ====");
+                    System.out.println("===== CREATE TASK ====");    
                     System.out.print("Enter Task ID (T00 Format): ");
                     String newTaskID = input.nextLine();
 
-                    boolean isFound = false;
+                    Task result = company.findTask(newTaskID);
 
-                    for (Task task : tasks) {
-                        if (task.getTaskId().equals(newTaskID)) {
-                            isFound = true;
-                        }
-                    }
-
-                    if (isFound) {
+                    if (result != null) {
                         System.out.println("Task ID already exists!");
                         System.out.println("Task creation will be cancelled. . .");
                         break;
@@ -165,23 +193,56 @@ public class Main {
                     System.out.print("Enter Department Requirement: ");
                     String newDepartment = input.nextLine();
 
-
                     Department departmentCreation = null;
 
-                    for (Department department : departments) {
+                    for (Department department : company.getDepartments()) {
                         if (department.getDepartmentName().equals(newDepartment)) {
                             departmentCreation = department;
                         }
                     }
-
-                    if (departmentCreation != null) {
-                        Task taskCreation = new Task(newTaskID, newTaskName, newTaskDescription, departmentCreation);
-                        tasks.add(taskCreation);
-                        System.out.println("Successfully Added the Task!");
-                        System.out.println("===== NEW TASK =====");
-                        taskCreation.printTask();
-                    } else {
+                    
+                    if (departmentCreation == null) {
                         System.out.println("Department " + newDepartment +" is currently not avaiable.");
+                        break;
+                    }
+
+                    System.out.println("==== TASK SELECTION ====");
+                    System.out.println("1. Regular Task");
+                    System.out.println("2. Urgent Task");
+                    System.out.println("3. Project Task");
+                    System.out.print("Choice: ");
+                    
+                    int taskSelection = input.nextInt();
+                    input.nextLine();
+
+                    switch (taskSelection) {
+                        case 1:
+                            company.addTask(new RegularTask(newTaskID, newTaskName, newTaskDescription, departmentCreation));
+                            System.out.println("Regular Task Succesfully Added!");
+                            break;
+                        case 2:
+                            System.out.print("Enter Priority Level of the Task (1-10): ");
+                            int priorityLevel = input.nextInt();
+                            input.nextLine();
+
+                            if (priorityLevel >= 0 && priorityLevel <= 10) {
+                                company.addTask(new UrgentTask(newTaskID, newTaskName, newTaskDescription, departmentCreation, priorityLevel));
+                                System.out.println("Urgent Task Succesfully Added!");
+                                break;
+                            } else {
+                                System.out.println("Invalid Priority Level");
+                            }
+                            break;
+                        case 3:
+                            System.out.print("Enter Project Name: ");
+                            String projectName = input.nextLine();
+
+                            company.addTask(new Project(newTaskID, newTaskName, newTaskDescription, departmentCreation, projectName));
+                            System.out.println("Project Task Succesfully Added!");
+                            break;
+                        default:
+                            System.out.println("Invalid Input!");
+                            break;
                     }
                     break;
                 case 6:

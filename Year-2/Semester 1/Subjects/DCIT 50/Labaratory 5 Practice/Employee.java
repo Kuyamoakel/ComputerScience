@@ -24,7 +24,7 @@ public class Employee {
 
     public void assignTask(Task task) {
 
-        if (department.getDepartmentName() != task.getDepartment().getDepartmentName()) {
+        if (!department.getDepartmentName().equals(task.getDepartment().getDepartmentName())) {
             System.out.println("Task Assignment Failed!");
             position.printPositionInfo();
             return;

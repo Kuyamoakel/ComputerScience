@@ -33,7 +33,6 @@ public class Company {
 
         if (result == null) {
             employees.add(employee);
-            System.out.println("Succesfully Added!");
         } else {
             System.out.println("Employee ID Already Exist!");
         }
@@ -56,8 +55,7 @@ public class Company {
         Task result = findTask(task.getTaskId());
 
         if (result == null) {
-            addTask(task);
-            System.out.println("Succesfully Added!");
+            tasks.add(task);
         } else {
             System.out.println("Task ID already exists!");
             System.out.println("Task creation will be cancelled. . .");
@@ -65,8 +63,8 @@ public class Company {
     }
 
     public void checkTasks() {
-         for (Employee employee : employees) {
-            employee.printEmployees();
+        for (Task t : tasks) {
+            t.printTask();
         }
     }
 
@@ -86,7 +84,6 @@ public class Company {
         }
 
         departments.add(department);
-        System.out.println("Departmetn Succesfully Added!");
     }
 
     public ArrayList<Department> getDepartments() {
