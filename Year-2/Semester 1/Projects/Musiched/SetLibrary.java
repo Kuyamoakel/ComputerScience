@@ -16,7 +16,7 @@ public class SetLibrary {
         }
 
         this.label = label;
-        this.sets = new ArrayList<>(sets); // defesive copying
+        this.sets = new ArrayList<>(sets); // defensive copying purposes!!!
     }
 
     public void addSet(WorshipSet set) {
