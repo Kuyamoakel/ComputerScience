@@ -4,7 +4,7 @@ public abstract class Card {
 
     public Card(String name, int manaCost) {
         this.name = name;
-        this.manaCost = manaCost;
+        setManaCost(manaCost);
     }
 
     // getters
@@ -19,6 +19,9 @@ public abstract class Card {
 
     // setter
     public void setManaCost(int manaCost) {
+        if (manaCost < 0) {
+            throw new IllegalArgumentException("Mana cost cannot be negative");
+        }
         this.manaCost = manaCost;
     }
 

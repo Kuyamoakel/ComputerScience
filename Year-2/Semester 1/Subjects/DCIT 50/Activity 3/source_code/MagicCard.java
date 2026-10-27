@@ -13,19 +13,17 @@ public class MagicCard extends Card {
     @Override 
     public void play(Player player, Enemy boss) {
 
-        int manaResult = super.getManaCost() - getManaCost();
 
-        if (manaResult < 0) {
-            System.out.println("Nog enough Mana!");
+        if (player.getMana() < getManaCost()) {
+            System.out.println("Not Enough Mana!");
             return;
         }
 
-        if (player.getMana() <= 0 || super.getManaCost() > player.getMana()) {
-            System.out.println("Not enough Mana!");
-            return;
-        }
+
 
          System.out.println("Player Cast " + super.getName() + " Dealt "  + damage + " to Badong the Great.");
+         System.out.println("Healed player by " + healAmount + " HP");
+         System.out.println("Restored " + manaRestore + " mana.");
          player.spendMana(super.getManaCost());
          boss.takeDamage(damage);
          player.heal(healAmount);
@@ -40,8 +38,8 @@ public class MagicCard extends Card {
         System.out.println("Card: " + super.getName());
         System.out.println("Mana Cost: " + super.getManaCost());
         System.out.println("Damage: " + damage);
-        System.out.println("Heal Amount: " + healAmount);
-        System.out.println("Mana Restored: " + manaRestore);
+        System.out.println("Heal:" + healAmount);
+        System.out.println("Restored: " + manaRestore);
         System.out.println("----------------------------------------");
     }
 }

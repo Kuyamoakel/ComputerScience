@@ -22,7 +22,7 @@ public class Deck {
         cardPool.add(new MagicCard("Mystic Snake", 2, 15, 15, 0));
         
         cardPool.add(new PureCard("Wild Axes", 5, 15, 0));
-        cardPool.add(new PureCard("Consume", 5, 45, 25));
+        cardPool.add(new PureCard("Consume", 5, 40, 25));
         cardPool.add(new PureCard("Purifying Flames", 3, 50, 35));
 
     }

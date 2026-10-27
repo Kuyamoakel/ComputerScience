@@ -8,16 +8,10 @@ class PhysicalCard extends Card {
 
     @Override 
     public void play(Player player, Enemy boss) {
+
         
-        int manaResult = super.getManaCost() - getManaCost();
-
-        if (manaResult < 0) {
-            System.out.println("Nog enough Mana!");
-            return;
-        }
-
-        if (player.getMana() <= 0 || super.getManaCost() > player.getMana()) {
-            System.out.println("Not enough Mana!");
+        if (player.getMana() < getManaCost()) {
+            System.out.println("Not Enough Mana!");
             return;
         }
 

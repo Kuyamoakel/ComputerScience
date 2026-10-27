@@ -8,6 +8,6 @@ public class Main {
         BattleEngine engine = new BattleEngine();
 
         engine.drawHand(masterDeck, 5);
-        engine.excuteTurn(hero, boss);
+        engine.executeTurn(hero, boss);
     }
 }

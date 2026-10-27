@@ -1,6 +1,6 @@
 class Enemy {
-    public String name;
-    public int hp;
+    private String name;
+    private int hp;
 
     public Enemy(String name, int hp) {
         this.name = name;
@@ -20,7 +20,8 @@ class Enemy {
     // methods
     public void takeDamage(int amount) {
 
-        hp -= amount;
+
+        hp = Math.max(0, hp - amount);
     }
 
     public boolean isDead() {

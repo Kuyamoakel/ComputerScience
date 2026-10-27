@@ -14,22 +14,19 @@ public class BattleEngine {
         }
     }
 
-    public void excuteTurn(Player player, Enemy boss) {
+    public void executeTurn(Player player, Enemy boss) {
+
+        int bossStartingHP = boss.getHp();
 
         System.out.println("----- Boss Battle Begins -----");
         System.out.println("Player | HP: " + player.getHp() + " | Mana: " + player.getMana());
-        for (Card card : hand) {
-            if (player.getMana() == 0) {
-                System.out.println("Your Mana Turns 0");
-                break;
-            }
-            if (player.getHp() <= 0 ) {
+        while (!hand.isEmpty()) {
+            // Players
+            if (player.getHp() <= 0 || boss.isDead()) {
                 break;
             }
 
-            if (boss.getHp() <= 0) {
-                break;
-            }
+            Card card = hand.remove(0);
             card.printDetails();
             card.play(player, boss);
         }
@@ -37,7 +34,7 @@ public class BattleEngine {
             System.out.println("---- BATTLE FINISHED! ----");
             System.out.println("Player Final Status -> HP: " + player.getHp() + " | Mana: " + player.getMana());
             System.out.println("Boss Final Status -> HP: " + boss.getHp());
-
+            System.out.println("Total Damage Dealt: " + (bossStartingHP - boss.getHp()));
         
     }
 }

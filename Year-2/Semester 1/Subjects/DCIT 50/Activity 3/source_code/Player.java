@@ -20,7 +20,7 @@ class Player {
     // methods
     public void takeDamage(int amount) {
 
-        hp -= amount;
+        hp = Math.max(0, hp - amount);
 
     }
 
