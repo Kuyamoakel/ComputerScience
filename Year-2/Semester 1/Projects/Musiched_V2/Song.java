@@ -59,9 +59,7 @@ public class Song {
     }
     
     public void displayInfo() {
-        System.out.println("----- SONGS INFO -----");
-        System.out.println("Title: " + title + " by " + artist);
-        System.out.println("Origianal Key: " + defaultKey.getDescription());
+        System.out.println(title + " by " + artist + " (" + defaultKey.getDescription() + ")");
     }
     
 }
