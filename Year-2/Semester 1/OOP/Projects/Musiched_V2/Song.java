@@ -8,11 +8,11 @@ public class Song {
 
     public Song(String title, String artist, MusicalKey defaultKey) {
 
-        if (title.isBlank() || title == null) {
+        if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("ERROR: Title must not be empty/null");
         }
 
-        if (artist.isBlank() || artist == null) {
+        if (artist == null || artist.isBlank()) {
             throw new IllegalArgumentException("ERROR: Artist must not be empty/null");
         }
 

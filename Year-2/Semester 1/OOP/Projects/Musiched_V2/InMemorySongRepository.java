@@ -20,10 +20,7 @@ public class InMemorySongRepository implements SongRepository {
 
     @Override 
     public Song findById(UUID id) {
-        for (Map.Entry<UUID, Song> entry : songs.entrySet()) {
-            return entry.getValue();
-        }
-        return null;
+        return songs.get(id);
     }
 
     @Override
@@ -33,13 +30,7 @@ public class InMemorySongRepository implements SongRepository {
 
     @Override
     public boolean deleteById(UUID id) {
-
-        for (Map.Entry<UUID, Song> entry : songs.entrySet()) {
-            if (entry.getKey().equals(id)) {
-                return true;
-            }
-        }
-        return false;
+        return songs.remove(id) != null;
     }
     
 }

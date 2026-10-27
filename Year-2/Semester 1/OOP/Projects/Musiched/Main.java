@@ -91,7 +91,7 @@ public class Main {
 
                         System.out.print("Enter Age: ");
                         int age = input.nextInt();
-                        input.nextLine();
+                        input.nextLine(); 
                         System.out.println("--- Insert your Instruments ---");
 
                         boolean instrumentLoop = false;
