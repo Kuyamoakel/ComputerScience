@@ -11,16 +11,16 @@ public class WorshipSet {
 
     public WorshipSet(String label, LocalDate date) {
         
-        if (label.isBlank() || label == null) {
+        if (label == null || label.isBlank()) {
             throw new IllegalArgumentException("ERROR: label must not be empty/null");
         }
     
-        if (LocalDate.now().isAfter(date)) {
-            throw new IllegalArgumentException("ERROR: date must not be in the past");
-        }
-
         if (date == null) {
             throw new IllegalArgumentException("ERROR: date must not be empty/null");
+        }
+
+        if (LocalDate.now().isAfter(date)) {
+            throw new IllegalArgumentException("ERROR: date must not be in the past");
         }
         
         this.id = UUID.randomUUID();
@@ -57,8 +57,38 @@ public class WorshipSet {
         this.date = date;
     }
 
+    public boolean containsSong(UUID id) {
+        for (SetSong song : songs) {
+            if (song.getSong().getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeSong(UUID id) {
+        for (SetSong song : songs) {
+            if (song.getSong().getId().equals(id)) {
+                return songs.remove(song);
+            }
+        }
+        return false;
+    }
+
+    public void changeSongKey(UUID songId, MusicalKey newKey) {
+        for (SetSong song : songs) {
+            if (song.getSong().getId().equals(songId)) {
+                song.changePerfomarnceKey(newKey);
+            }
+        }
+    }
     // METHODS
     public void addSetSongs(Song song, MusicalKey performanMusicalKey) {
+        if (containsSong(song.getId())) {
+            throw new IllegalArgumentException(
+                "Song Already Exist"
+            );
+        }
         songs.add(new SetSong(song, performanMusicalKey));
     }
 

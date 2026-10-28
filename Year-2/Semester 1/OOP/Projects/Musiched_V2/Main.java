@@ -1,47 +1,46 @@
-import java.util.List;
+// import java.util.List;
 import java.time.LocalDate;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 class Main {
     public static void main(String[] args) {
 
         SongRepository repository = new InMemorySongRepository();
+        SongService songService = new SongService(repository);
 
-        Song song1 = new Song(
-        "Goodness Of God",
-        "Bethel Music",
-                MusicalKey.C
+        Song song1 = songService.registerSong(
+            "Goodness Of God",
+            "Bethel Music",
+            MusicalKey.C
         );
 
-        Song song2 = new Song (
+        Song song2 = songService.registerSong (
             "Mangha",
             "Bethel Tagalog",
             MusicalKey.A
         );
 
+        Song selectedSong = songService.getSong(song1.getId());
+        Song selectedSong1 = songService.getSong(song2.getId());
 
-        repository.save(song1);
-        repository.save(song2);
 
+        WorshipSet concert = new WorshipSet("Concert", LocalDate.of(2026, 11, 1));
 
-        Song selectedSong = repository.findById(song1.getId());
-        Song selectedSong2 = repository.findById(song2.getId());
+        concert.addSetSongs(selectedSong, MusicalKey.A);
+        concert.addSetSongs(selectedSong1, MusicalKey.G);
 
-        WorshipSet sunday = new WorshipSet("Sunday Service", LocalDate.now().plusDays(5));
-        WorshipSet sunday2 = new WorshipSet("October Praise", LocalDate.of(2026, 12, 25));
-
-        sunday.addSetSongs(selectedSong, MusicalKey.D);
-        sunday2.addSetSongs(selectedSong2, MusicalKey.A_Sharp);
-
-        song1.displayInfo();
-        song2.displayInfo();
+        concert.displaySet();
         
-
-        sunday.displaySet();
-        sunday2.displaySet();
-
-
-
+        System.out.println(concert.containsSong(song1.getId()));
+        concert.changeSongKey(song1.getId(), MusicalKey.B);
         
+        concert.displaySet();
+        
+        concert.removeSong(song1.getId());
+        
+        concert.displaySet();
+
+
+
     }
 }

@@ -37,7 +37,7 @@ public class Song {
     
     // setters
     public void setTitle(String title) {
-        if (title.isBlank() || title == null) {
+        if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("ERROR: Title must not be empty/null");
         }
 
@@ -45,7 +45,7 @@ public class Song {
     }
 
     public void setArtist(String artist) {
-        if (artist.isBlank() || artist == null) {
+        if (artist == null || artist.isBlank()) {
             throw new IllegalArgumentException("ERROR: Artist must not be empty/null");
         }
         this.artist = artist;
@@ -59,6 +59,7 @@ public class Song {
     }
     
     public void displayInfo() {
+        System.out.println("---------------------------");
         System.out.println(title + " by " + artist + " (" + defaultKey.getDescription() + ")");
     }
     
