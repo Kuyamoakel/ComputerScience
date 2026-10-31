@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubism</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="container">
+        <div class="player-info">
+            <div class="player-details">
+                <h1>Akel</h1>
+            </div>
+            <div class="xp-container">
+                <h1 id="xp-bar">XP: <b id="xp-value"></b></h1>
+            </div>
+        </div>
+        <div class="card">
+            <h1 id="quest-title"></h1>
+            <p id="quest-description"></p>
+            <progress id="progress-bar" class="progress" value="5" max="20"></progress>
+            
+            <div class="quest-info">
+                <p><b id="progress"></b> / <b id="target">20</b> Target</p>
+                <p>+<b id="quest-xp">100</b> XP</p>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button id="decrement">-</button>
+            <button id="increment">+</button>
+        </div>
+    </main> 
+</body>
+
+</html>
