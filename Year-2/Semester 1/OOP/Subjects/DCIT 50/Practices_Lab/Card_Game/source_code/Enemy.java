@@ -3,6 +3,10 @@ class Enemy {
     private int hp;
 
     public Enemy(String name, int hp) {
+
+        if (hp < 0) {
+            throw new IllegalArgumentException("Enemy hp must not be negative");
+        }
         this.name = name;
         this.hp = hp;
     }
@@ -20,15 +24,15 @@ class Enemy {
     // methods
     public void takeDamage(int amount) {
 
+        if (amount < 0) {
+            throw new IllegalArgumentException("Take Damage cannot be negatie");
+        }
+
 
         hp = Math.max(0, hp - amount);
     }
 
     public boolean isDead() {
-
-        if (hp <= 0) {
-            return true;
-        }
-        return false;
+        return hp <= 0;
     }
 }

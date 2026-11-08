@@ -7,7 +7,7 @@ public class Main {
         Deck masterDeck = new Deck();
         BattleEngine engine = new BattleEngine();
 
-        engine.drawHand(masterDeck, 5);
+        engine.drawHand(masterDeck, 4);
         engine.executeTurn(hero, boss);
     }
 }

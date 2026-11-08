@@ -29,11 +29,8 @@ public class Deck {
 
     public Card drawRandomCard() {
         int size = randomGenerator.nextInt(cardPool.size());
-        return cardPool.get(size);
-    }
 
-    public void addCard(Card card) {
-        cardPool.add(card);
+        return cardPool.get(size);
     }
 }
 
