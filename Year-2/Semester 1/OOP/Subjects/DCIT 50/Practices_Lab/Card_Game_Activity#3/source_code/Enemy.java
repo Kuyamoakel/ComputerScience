@@ -25,7 +25,7 @@ class Enemy {
     public void takeDamage(int amount) {
 
         if (amount < 0) {
-            throw new IllegalArgumentException("Take Damage cannot be negatie");
+            throw new IllegalArgumentException("Take Damage cannot be negative");
         }
 
 

@@ -38,7 +38,7 @@ class Player {
             throw new IllegalArgumentException("Heal cannot be negative");
         }
 
-        hp = Math.max(100, hp + amount);
+        hp = amount;
     }
 
     public void spendMana(int amount) {
