@@ -1,4 +1,5 @@
-class PhysicalCard extends Card {
+
+public class PhysicalCard extends Card {
     private int damage;
 
     public PhysicalCard(String name, int manaCost, int damage) {

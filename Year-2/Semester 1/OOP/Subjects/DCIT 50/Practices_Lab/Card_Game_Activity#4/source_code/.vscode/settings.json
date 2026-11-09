@@ -1,4 +1,5 @@
 {
+    "java.project.sourcePaths": ["source_code"],
     "java.project.outputPath": "bin",
     "files.exclude": {
         "**/*.class": true

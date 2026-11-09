@@ -1,4 +1,5 @@
-class Enemy {
+
+public class Enemy {
     private String name;
     private int hp;
 
@@ -6,7 +7,7 @@ class Enemy {
 
         if (hp < 0) {
             throw new IllegalArgumentException("Enemy hp must not be negative");
-        }
+        }   
         this.name = name;
         this.hp = hp;
     }

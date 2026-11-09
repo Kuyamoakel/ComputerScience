@@ -1,3 +1,4 @@
+
 public class MagicCard extends Card {
     private int damage;
     private int healAmount;

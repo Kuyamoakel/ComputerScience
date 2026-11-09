@@ -1,11 +1,14 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Deck {
     private ArrayList<Card> cardPool;
     private Random randomGenerator;
+
+    public ArrayList<Card> getCardPool() {
+        return cardPool;
+    }
     
-    public Deck() {
+    public Deck(BattleEngine battleEngine) {
         this.cardPool = new ArrayList<>();
         this.randomGenerator = new Random();
 
@@ -25,12 +28,36 @@ public class Deck {
         cardPool.add(new PureCard("Consume", 5, 40, 25));
         cardPool.add(new PureCard("Purifying Flames", 3, 50, 35));
 
+        cardPool.add(new BuffCard("Vitality Boost", 2, 20, 0, battleEngine));
+        cardPool.add(new BuffCard("Titan's Blessing", 4, 40, 0, battleEngine));
+        cardPool.add(new BuffCard("Arcane Wisdome", 2, 20, 1, battleEngine));
+        cardPool.add(new BuffCard("Mana Mastery", 4, 20, 2, battleEngine));
+        cardPool.add(new BuffCard("Divine Ascension", 6, 60, 0, battleEngine));
+
+        cardPool.add(new DemiCard("Soul Reaver", 1, 10.0));
+        cardPool.add(new DemiCard("Soul Reaver", 2, 15.0));
+        cardPool.add(new DemiCard("Soul Reaver", 3, 20.0));
+        cardPool.add(new DemiCard("Soul Reaver", 4, 25.0));
+        cardPool.add(new DemiCard("Soul Reaver", 6, 35.0));
+
     }
 
     public Card drawRandomCard() {
-        int size = randomGenerator.nextInt(cardPool.size());
+        boolean isFound = false;
+        int size;
+        Card poolCard;
+        
+        do {
+        size = randomGenerator.nextInt(cardPool.size());
+        poolCard = cardPool.get(size);
 
-        return cardPool.get(size);
+        if (poolCard == null) {
+            continue;
+        }
+        isFound = true;
+        } while(!isFound);
+
+        return cardPool.remove(size);
     }
 }
 

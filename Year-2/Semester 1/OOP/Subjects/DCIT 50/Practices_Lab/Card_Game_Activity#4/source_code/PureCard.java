@@ -1,3 +1,4 @@
+
 public class PureCard extends Card{
     private int damage;
     private int selfDamage;
@@ -10,6 +11,11 @@ public class PureCard extends Card{
 
     @Override 
     public void play(Player player, Enemy boss) {
+
+        if (selfDamage >= player.getHp()) {
+            System.out.println("Too weak to cast");
+            return;
+        }
 
         if (player.getMana() < getManaCost()) {
             System.out.println("Not Enough Mana!");

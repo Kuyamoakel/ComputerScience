@@ -1,10 +1,15 @@
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class BattleEngine {
     private ArrayList<Card> hand;
 
     public BattleEngine(){
         this.hand = new ArrayList<>();
+    }
+
+    public ArrayList<Card> getHand() {
+        return hand;
     }
 
     public void drawHand(Deck deck, int numberOfCards) {
@@ -32,7 +37,7 @@ public class BattleEngine {
         }
 
             System.out.println("---- BATTLE FINISHED! ----");
-            System.out.println("Player Final Status -> HP: " + player.getHp() + " | Mana: " + player.getMana());
+            System.out.println("Player Final Status -> HP: " + player.getHp() + "/" + player.getMaxHp() + " | Mana: " + player.getMana() + "/" + player.getMaxMana());
             System.out.println("Boss Final Status -> HP: " + boss.getHp());
             System.out.println("Total Damage Dealt: " + (bossStartingHP - boss.getHp()));
         
