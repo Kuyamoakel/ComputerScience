@@ -1,6 +1,6 @@
-// import java.util.List;
+import java.util.List;
 import java.time.LocalDate;
-// import java.util.ArrayList;
+import java.util.ArrayList;
 
 class Main {
     public static void main(String[] args) {
@@ -33,10 +33,6 @@ class Main {
         
         System.out.println(concert.containsSong(song1.getId()));
         concert.changeSongKey(song1.getId(), MusicalKey.B);
-        
-        concert.displaySet();
-        
-        concert.removeSong(song1.getId());
         
         concert.displaySet();
 

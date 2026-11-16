@@ -8,7 +8,6 @@ public class InMemorySongRepository implements SongRepository {
 
     private final Map<UUID, Song> songs = new HashMap<>();
 
-
     @Override 
     public void save(Song song) {
         if (song == null) {
